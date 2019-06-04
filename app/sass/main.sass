@@ -51,8 +51,115 @@
         background: url(../img/border.png) repeat center
 .constructor
     background: url(../img/main_bg.jpg) repeat
-
-
+    .ingredients
+        width: 100%
+        max-width: 410px
+    .pizza-view
+        width: 100%
+        max-width: 380px
+    .paycheck
+        width: 100%
+        max-width: 370px
+        .paycheck-wrap
+            padding: 40px 10px
+            background-color: #fff
+            text-align: center
+            position: relative
+            &:before, &:after
+                +pseudo
+                left: 0
+                background-size: 15px 15px
+                background-repeat: repeat-x
+                height: 15px
+                width: 100%
+            &:before
+                top: 0
+                background-image: linear-gradient(40deg, transparent 10px, $accent 11px), linear-gradient(320deg, transparent 10px, $accent 11px)
+            &:after
+                bottom: 0
+                background-image: linear-gradient(320deg, $accent 10px, transparent 11px), linear-gradient(40deg, $accent 10px, transparent 11px)
+        img 
+            width: 100px
+            margin-bottom: 10px
+        .title
+            +flex(space-between, center)
+            font-weight: 600
+        .check-list
+            margin: 40px 0
+            text-align: left
+            position: relative
+            &:before
+                +pseudo
+                bottom: 110%
+                left: 50%
+                transform: translateX(-50%)
+                width: 90%
+                height: 5px
+                border-top: 1px dashed $accent
+                border-bottom: 1px dashed $accent
+            &:after
+                +pseudo
+                top: 115%
+                left: 50%
+                transform: translateX(-50%)
+                width: 90%
+                height: 5px
+                border-top: 1px dashed $accent
+                border-bottom: 1px dashed $accent
+            .check-list-header
+                font-size: 1.25rem
+                font-weight: 600
+                margin-bottom: 10px
+            ul 
+                list-style-type: none
+                padding: 0
+            li
+                margin: 15px 0
+                width: 100%
+                span 
+                    font-weight: 500
+            .product-remove
+                width: 15px
+                height: 15px
+                display: block
+                position: relative
+                float: right
+                &:before
+                    +pseudo
+                    width: 100%
+                    height: 100%
+                    top: 50%
+                    left: 50%
+                    transform: translate(-50%, -50%)
+                    border-radius: 100%
+                    border: 1px solid #000
+                &:after
+                    position: absolute
+                    content: '\2716'
+                    font-size: .8rem
+                    text-align: center
+                    line-height: 21px
+                    top: 50%
+                    left: 50%
+                    transform: translate(-50%, -50%)
+            .product-price
+                margin: 0 40px
+                float: right
+            .product-count
+                float: right
+        .total-price, .total-weight
+            text-align: left
+            color: $accent
+            font-weight: 600
+            font-size: 1.5rem
+            line-height: 1.5
+            span 
+                font-size: inherit 
+                font-weight: inherit
+        .total-weight
+            color: $black
+            font-size: 1.25rem
+        button
 
 
 

@@ -35,13 +35,24 @@ var model = {
 };
 
 
-var view = {};
+var view = {
+  displayDate: function(){
+    var date = new Date;
+    var dateContainer = document.querySelector('.date');
+    dateContainer.textContent = date.getDate()+'.'+date.getMonth()+'.'+date.getFullYear();
+  },
+};
 
 var controller = {};
 
-model.getdata('../database.json').then(
-  function(request){console.log(request)},
-  function(err){console.log(err)}
-)
+
+
+
+view.displayDate();
+
+// model.getdata('../database.json').then(
+//   function(request){console.log(request)},
+//   function(err){console.log(err)}
+// )
 
 }
