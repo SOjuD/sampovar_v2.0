@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <meta name="description" content="#{description}">
+    <meta name="keywords" content="#{keywords}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale= 1">
+    <meta property="og:image" content="img/soc.png">
+    <link rel="icon" href="img/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="100x100" href="img/favicon/favicon.png">
+    <meta name="theme-color" content="#000">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <div class="top-line">
+      <div class="container"><a class="top-logo"><img src="img/logo.png" alt="sportpizza.by"></a>
+        <div class="clock"><img src="img/clock.png" alt="clock">с 10:00 до 23:00</div>
+        <div class="logo2"><img src="img/logo2.png" alt="sam-povar.by"></div>
+        <div class="top-contact"><img src="img/phone.png" alt="png"><a class="phone" href="tel:7235">7235</a><img src="img/mts.png" alt="mts"><img src="img/velcom.png" alt="velcom"><img src="img/life.png" alt="life"></div>
+        <div class="cart"><img src="img/cart.png" alt="cart">
+          <div id="total">1</div>
+        </div>
+      </div>
+    </div>
+    <header>
+      <div class="header-banner">
+        <div class="header-content container">
+          <h1> Собери самую вкусную пиццу,<br> а мы её привезём!</h1><img class="slice" src="img/slice.png" alt="pizza-arrow">
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="constructor">
+        <div class="container">
+          <h2 class="sec_title">Конструктор пиццы</h2>
+          <div class="ingredients"></div>
+          <div class="pizza-view"></div>
+          <div class="paycheck"></div>
+        </div>
+      </section>
+    </main>
+    <footer id="contacts">
+      <div class="container">
+        <div class="col">
+          <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d723.2516290269781!2d31.011338531403606!3d52.429892504269596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46d46854ebbca467%3A0x6a3a566ae1560887!2z0YPQuy4g0JjRgNC40L3QuNC90YHQutCw0Y8gNiwg0JPQvtC80LXQu9GM!5e0!3m2!1sru!2sby!4v1559506829877!5m2!1sru!2sby" llowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="col">
+          <div class="contacts"> 
+            <p>контакты</p>
+            <div class="adress">г. Гомель, ул. Ирининская д.6</div><a class="phone" href="tel:7235">7235 (Звонок бесплатный)</a><a class="phone" href="tel:+375(29)166-66-66">+375(29)166-66-66 (доставка)</a><a class="phone" href="tel:+375(29)677-77-77">+375(29)677-77-77 (доставка)</a><a class="phone" href="tel:+375(29)733-33-33">+375(29)733-33-33 (доставка)</a><a class="phone" href="tel:+375(29)383-05-52">+375(29)383-05-52 (самовывоз)</a>
+            <div class="time">Заказы принимаются с 10:00 до 23:00</div>
+            <p>© Все права защищены ОДО "Дзю-до", 2019<br> Юр. адрес: 246004, Беларусь, Гомель ул. Рабочая, 26</p>
+            <p>УНП 490319040</p>
+          </div>
+        </div>
+        <div class="col"> 
+          <div class="logo"> <img src="img/logo2.png" alt="sam-povar.by"></div>
+          <div class="social-links"><span>Мы в социальных сетях</span><a class="link" href="https://www.facebook.com/rashad.mamedov.7731"> <img src="img/facebook.png" alt="facebook"></a><a class="link" href="https://www.instagram.com/rashad.mamedov.7731/"><img src="img/instagram.png" alt="instagram"></a></div>
+        </div>
+      </div>
+      <div class="bottom-line">
+        <div class="container">
+          <div class="by">Сайт разработан:<a href="mail:talrash666@gmail.com"> talrash666@gmail.com</a></div>
+        </div>
+      </div>
+    </footer>
+    <div class="popup">
+      <div class="popupMessage successMessage">Ваша заявка зафиксирована!</div>
+      <div class="popupMessage errorMessage">Ошибка отправки!</div>
+    </div>
+    <div class="preloader">
+      <div class="loader-one">
+        <div class="loader-one__center"></div>
+        <div class="loader-one__item"></div>
+        <div class="loader-one__item"></div>
+        <div class="loader-one__item"></div>
+        <div class="loader-one__item"></div>
+        <div class="loader-one__item"></div>
+        <div class="loader-one__item"></div>
+      </div>
+      <svg class="loader-one__svg" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs></defs>
+        <filter id="gozzo">
+          <fegaussianblur in="SourceGraphic" stdDeviation="10" result="blur"></fegaussianblur>
+          <fecolormatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></fecolormatrix>
+          <feblend in="SourceGraphic" in2="goo"></feblend>
+        </filter>
+      </svg>
+    </div>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+    <script src="js/libs.min.js"></script>
+    <script src="js/common.js"></script>
+  </body>
+</html>

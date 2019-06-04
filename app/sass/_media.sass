@@ -1,0 +1,97 @@
+@import "vars"
+@import "mixin"
+
+
+/*==========  Desktop First  ==========*/
+
+@media only screen and (max-width : 1600px)
+    .clean-text
+        display: none
+
+// ≥1200px
+@media only screen and (max-width : 1200px)
+    .container
+        width: 100%
+    .top-line
+        .top-logo
+            display: none
+        .top-menu
+            margin: 0 2%
+// ≥992px
+@media only screen and (max-width :1024px)
+    body, html
+        font-size: 14px
+    .container
+        padding: 5px
+
+                
+    // ---------------------меню в 1 строку---------------------
+    .top-line
+        padding-top: 10px
+        padding-bottom: 10px
+        .top-logo
+            position: absolute
+            left: 10px
+            top: 10px
+            z-index: 3
+        .top-contact
+            position: absolute
+            top: 5px
+            right: 10px
+            z-index: 2
+            .phone
+                line-height: 1.65
+        .container
+            padding: 0
+        .top-menu
+            position: relative
+            width: 100%
+            max-width: 100%
+            margin: 0
+            .hamburger
+                top: 10%
+                margin-left: 20px
+                display: block
+            ul
+                position: absolute
+                width: 100%
+                text-align: center
+                background-color: inherit
+                top: 90%
+                left: 0
+                display: none
+                margin: 0
+                li
+                    flex-basis: 100%
+                    text-align: center
+                    padding: 5px
+                    a 
+                        padding: 10px
+                        font-size: 1.8rem
+
+// ≥768px
+@media only screen and (max-width : 768px)
+    footer 
+        .map
+            width: 100%
+            height: 350px
+        .contacts
+            padding: 20px 10px
+            width: 100%
+            +flex
+        
+
+
+// ≥576px
+@media only screen and (max-width : 576px)
+    // 
+
+
+
+    
+
+   
+    
+
+
+

@@ -1,0 +1,54 @@
+block footer
+
+footer#contacts
+    .container
+        .col
+            .map
+                iframe( src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d723.2516290269781!2d31.011338531403606!3d52.429892504269596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46d46854ebbca467%3A0x6a3a566ae1560887!2z0YPQuy4g0JjRgNC40L3QuNC90YHQutCw0Y8gNiwg0JPQvtC80LXQu9GM!5e0!3m2!1sru!2sby!4v1559506829877!5m2!1sru!2sby" llowfullscreen)
+        .col
+            .contacts 
+                p контакты
+                .adress г. Гомель, ул. Ирининская д.6
+                a.phone(href="tel:7235") 7235 (Звонок бесплатный)
+                a.phone(href="tel:+375(29)166-66-66") +375(29)166-66-66 (доставка)
+                a.phone(href="tel:+375(29)677-77-77") +375(29)677-77-77 (доставка)
+                a.phone(href="tel:+375(29)733-33-33") +375(29)733-33-33 (доставка)
+                a.phone(href="tel:+375(29)383-05-52") +375(29)383-05-52 (самовывоз)
+                .time Заказы принимаются с 10:00 до 23:00
+                p © Все права защищены ОДО "Дзю-до", 2019<br> Юр. адрес: 246004, Беларусь, Гомель ул. Рабочая, 26
+                p УНП 490319040
+        .col 
+            .logo 
+                img(src="img/logo2.png", alt="sam-povar.by")
+            .social-links
+                span Мы в социальных сетях
+                a.link(href="https://www.facebook.com/rashad.mamedov.7731") 
+                    img(src="img/facebook.png", alt="facebook")
+                a.link(href="https://www.instagram.com/rashad.mamedov.7731/")
+                    img(src="img/instagram.png", alt="instagram")
+    .bottom-line
+        .container
+            .by Сайт разработан:
+                a(href="mail:talrash666@gmail.com")  talrash666@gmail.com
+.popup
+    .popupMessage.successMessage Ваша заявка зафиксирована!
+    .popupMessage.errorMessage Ошибка отправки!
+.preloader
+    .loader-one
+        .loader-one__center
+        .loader-one__item
+        .loader-one__item
+        .loader-one__item
+        .loader-one__item
+        .loader-one__item
+        .loader-one__item
+    svg.loader-one__svg(xmlns='http://www.w3.org/2000/svg', version='1.1')
+        defs
+        filter#gozzo
+            fegaussianblur(in='SourceGraphic', stdDeviation='10', result='blur')
+            fecolormatrix(in='blur', mode='matrix', values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7', result='goo')
+            feblend(in='SourceGraphic', in2='goo')
+link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+link(href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet")
+script(src='js/libs.min.js')
+script(src='js/common.js')

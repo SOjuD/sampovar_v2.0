@@ -1,0 +1,102 @@
+@import "vars"
+    
+//псевдо-элмент
+=pseudo
+    content: ''
+    position: absolute
+    
+    
+// слева по центру псевдо-элемент
+=pseudoLC
+    content: ''
+    position: absolute
+    left: 0
+    top: 50%
+    transform: translateY(-50%)
+
+
+//слева слеваэлемент
+=pseudoL
+    content: ''
+    position: absolute
+    left: 0
+
+
+//наложение затемнения на фон
+=pseudoD($color)
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    background-color: $color
+
+
+//стилизация кнопок
+=buttonStyle1( $width: 100%, $fz: 1rem, $bg: $invert, $color: $text, $height: 34px )
+    background-color: $bg
+    border: 2px solid $bg
+    color: $color
+    text-align: center
+    line-height: $height
+    width: $width
+    font-size: $fz
+    transition: .4s
+    &:hover
+        background-color: transparent
+        color: $color
+        border-color: $color
+=buttonStyle2( $width: 100%, $fz: 1rem, $bg: $invert, $color: $text, $height: 34px )
+    background-color: $bg
+    border: 2px solid $bg
+    color: $color
+    text-align: center
+    line-height: $height
+    width: $width
+    font-size: $fz
+    transition: .4s
+    &:hover
+        background-color: transparent
+        color: $bg
+
+
+//подчёркивание ссылок на hover        
+=linksLine($color: $accent)   
+    position: relative
+    &:before
+        content: ''
+        width: 0
+        position: absolute
+        background-color: $color
+        height: 2px
+        left: 0
+        bottom: 10px
+        transition: .4s
+    &:hover:before
+        width: 100%
+
+
+//flex
+=flex($pos: center, $vpos: stretch)
+    display: flex
+    justify-content: $pos
+    flex-wrap: wrap
+    align-items: $vpos
+
+
+
+
+
+@mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $asset-pipeline: false )
+	@font-face
+		font-family: $font-family
+		font-weight: $weight
+		font-style: $style
+
+		@if $asset-pipeline == true 
+			src: font-url('#{$file-path}.eot')
+			src: font-url('#{$file-path}.eot?#iefix') format('embedded-opentype'), font-url('#{$file-path}.woff') format('woff'), font-url('#{$file-path}.ttf') format('truetype')
+		@else
+			src: url('#{$file-path}.eot')
+			src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'), url('#{$file-path}.woff') format('woff'), url('#{$file-path}.ttf') format('truetype')

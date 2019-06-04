@@ -1,0 +1,48 @@
+-let title = 'title'
+-let description = 'description'
+-let keywords = 'keywords'
+block variables
+include mixins
+
+
+
+doctype html
+html(lang='ru')
+    head
+        meta(charset='UTF-8')
+        title #{title}
+        meta(name='description', content='#{description}')
+        meta(name='keywords', content='#{keywords}')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale= 1')
+        meta(property='og:image', content='img/soc.png')
+        link(rel='icon', href='img/favicon/favicon.ico')
+        link(rel='apple-touch-icon', sizes='100x100', href='img/favicon/favicon.png')
+        meta(name='theme-color', content='#000')
+        link(rel='stylesheet', href='css/main.css')
+
+    body
+        block body
+            .top-line
+                .container
+                    a.top-logo
+                        img(src='img/logo.png', alt='sportpizza.by')
+                    .clock
+                        img(src="img/clock.png", alt="clock")
+                        | с 10:00 до 23:00
+                    .logo2
+                        img(src='img/logo2.png', alt='sam-povar.by')
+                    .top-contact
+                        img(src="img/phone.png", alt="png")
+                        a.phone(href='tel:7235') 7235
+                        img(src="img/mts.png", alt="mts")
+                        img(src="img/velcom.png", alt="velcom")
+                        img(src="img/life.png", alt="life")
+                    .cart
+                        img(src="img/cart.png", alt="cart")
+                        #total 1
+            header
+                .header-banner
+                    .header-content.container
+                        h1  Собери самую вкусную пиццу,<br> а мы её привезём!
+                        img.slice(src="img/slice.png", alt="pizza-arrow")

@@ -1,0 +1,288 @@
+{
+    "dough": [
+        {
+            "name": "Тонкое",
+            "weight": 340,
+            "price": 10.50
+        },
+        {
+            "name": "Пышное",
+            "weight": 580,
+            "price": 10.50
+        }
+    ],
+    "size": [30],
+    "base": ["Томатная", "Майонезная"],
+    "ingredients": [
+        {
+            "name": "Ветчина",
+            "category": "meat",
+            "weight": [20, 40, 60],
+            "price": 0.30,
+            "maximum": 3,
+            "icon": "img/icons/ham.png",
+            "imgs": ["img/ingredients/ham1.png", "img/ingredients/ham2.png", "img/ingredients/ham3.png"]
+        },
+        {
+            "name": "Шинка",
+            "category": "meat",
+            "weight": [20, 40, 60],
+            "price": 0.50,
+            "maximum": 3,
+            "icon": "img/icons/schinken.png",
+            "imgs": ["img/ingredients/schinken1.png", "img/ingredients/schinken2.png", "img/ingredients/schinken3.png"]
+        },
+        {
+            "name": "Курица",
+            "category": "meat",
+            "weight": [20, 40, 60],
+            "price": 0.80,
+            "maximum": 3,
+            "icon": "img/icons/chicken.png",
+            "imgs": ["img/ingredients/chicken1.png", "img/ingredients/chicken2.png", "img/ingredients/chicken3.png"]
+        },
+        {
+            "name": "Свинина",
+            "category": "meat",
+            "weight": [20, 40, 60],
+            "price": 1.10,
+            "maximum": 3,
+            "icon": "img/icons/pork.png",
+            "imgs": ["img/ingredients/pork1.png", "img/ingredients/pork2.png", "img/ingredients/pork3.png"]
+        },
+        {
+            "name": "Баранина",
+            "category": "meat",
+            "weight": [20, 40, 60],
+            "price": 2.30,
+            "maximum": 3,
+            "icon": "img/icons/lamb.png",
+            "imgs": ["img/ingredients/lamb1.png", "img/ingredients/lamb2.png", "img/ingredients/lamb3.png"]
+        },
+        {
+            "name": "Говядина",
+            "category": "meat",
+            "weight": [20, 40, 60],
+            "price": 1.50,
+            "maximum": 3,
+            "icon": "img/icons/beef.png",
+            "imgs": ["img/ingredients/beef1.png", "img/ingredients/beef2.png", "img/ingredients/beef3.png"]
+        },
+        {
+            "name": "Салями",
+            "category": "meat",
+            "weight": [20, 40, 60],
+            "price": 0.35,
+            "maximum": 3,
+            "icon": "img/icons/salami.png",
+            "imgs": ["img/ingredients/salami1.png", "img/ingredients/salami2.png", "img/ingredients/salami3.png"]
+        },
+        {
+            "name": "Охотничьи колбаски",
+            "category": "meat",
+            "weight": [20, 40, 60],
+            "price": 0.40,
+            "maximum": 3,
+            "icon": "img/icons/hunting-sausages.png",
+            "imgs": ["img/ingredients/hunting-sausages1.png", "img/ingredients/hunting-sausages2.png", "img/ingredients/hunting-sausages3.png"]
+        },
+        {
+            "name": "Бекон",
+            "category": "meat",
+            "weight": [20, 40, 60],
+            "price": 0.50,
+            "maximum": 3,
+            "icon": "img/icons/bacon.png",
+            "imgs": ["img/ingredients/bacon1.png", "img/ingredients/bacon2.png", "img/ingredients/bacon3.png"]
+        },
+        {
+            "name": "Болоньезе",
+            "category": "meat",
+            "weight": [40, 60, 80],
+            "price": 1.50,
+            "maximum": 3,
+            "icon": "img/icons/bolognese.png",
+            "imgs": ["img/ingredients/bolognese1.png", "img/ingredients/bolognese2.png", "img/ingredients/bolognese3.png"]
+        },
+        {
+            "name": "Помидор",
+            "category": "vegetable",
+            "weight": [20, 40, 60],
+            "price": 0.20,
+            "maximum": 3,
+            "icon": "img/icons/tomato.png",
+            "imgs": ["img/ingredients/tomato1.png", "img/ingredients/tomato2.png", "img/ingredients/tomato3.png"]
+        },
+        {
+            "name": "Огурец свежий",
+            "category": "vegetable",
+            "weight": [20, 40, 60],
+            "price": 0.16,
+            "maximum": 3,
+            "icon": "img/icons/fresh-cucumber.png",
+            "imgs": ["img/ingredients/fresh-cucumber1.png", "img/ingredients/fresh-cucumber2.png", "img/ingredients/fresh-cucumber3.png"]
+        },
+        {
+            "name": "Корнишон",
+            "category": "vegetable",
+            "weight": [20, 40, 60],
+            "price": 0.42,
+            "maximum": 3,
+            "icon": "img/icons/cucumber.png",
+            "imgs": ["img/ingredients/cucumber1.png", "img/ingredients/cucumber2.png", "img/ingredients/cucumber3.png"]
+        },
+        {
+            "name": "Маслины",
+            "category": "vegetable",
+            "weight": [15, 30, 45],
+            "price": 0.35,
+            "maximum": 3,
+            "icon": "img/icons/black-olives.png",
+            "imgs": ["img/ingredients/black-olives1.png", "img/ingredients/black-olives2.png", "img/ingredients/black-olives3.png"]
+        },
+        {
+            "name": "Оливки",
+            "category": "vegetable",
+            "weight": [15, 30, 45],
+            "price": 0.40,
+            "maximum": 3,
+            "icon": "img/icons/olives.png",
+            "imgs": ["img/ingredients/olives1.png", "img/ingredients/olives2.png", "img/ingredients/olives3.png"]
+        },
+        {
+            "name": "Лук",
+            "category": "vegetable",
+            "weight": [15, 30, 45],
+            "price": 0.15,
+            "maximum": 3,
+            "icon": "img/icons/onion.png",
+            "imgs": ["img/ingredients/onion1.png", "img/ingredients/onion2.png", "img/ingredients/onion3.png"]
+        },
+        {
+            "name": "Кукуруза",
+            "category": "vegetable",
+            "weight": [15, 30, 45],
+            "price": 0.15,
+            "maximum": 3,
+            "icon": "img/icons/corn.png",
+            "imgs": ["img/ingredients/corn1.png", "img/ingredients/corn2.png", "img/ingredients/corn3.png"]
+        },
+        {
+            "name": "Горошек",
+            "category": "vegetable",
+            "weight": [15, 30, 45],
+            "price": 0.17,
+            "maximum": 3,
+            "icon": "img/icons/copearn.png",
+            "imgs": ["img/ingredients/pea1.png", "img/ingredients/pea2.png", "img/ingredients/pea3.png"]
+        },
+        {
+            "name": "Перец болгарский",
+            "category": "vegetable",
+            "weight": [15, 30, 45],
+            "price": 0.30,
+            "maximum": 3,
+            "icon": "img/icons/pepper.png",
+            "imgs": ["img/ingredients/pepper1.png", "img/ingredients/pepper2.png", "img/ingredients/pepper3.png"]
+        },
+        {
+            "name": "Чесное",
+            "category": "vegetable",
+            "weight": [3, 6, 9],
+            "price": 0.15,
+            "maximum": 3,
+            "icon": "img/icons/garlic.png",
+            "imgs": ["img/ingredients/garlic1.png", "img/ingredients/garlic1.png", "img/ingredients/garlic1.png"]
+        },
+        {
+            "name": "Ананас",
+            "category": "vegetable",
+            "weight": [20, 40, 60],
+            "price": 0.31,
+            "maximum": 3,
+            "icon": "img/icons/pineapple.png",
+            "imgs": ["img/ingredients/pineapple1.png", "img/ingredients/pineapple2.png", "img/ingredients/pineapple3.png"]
+        },
+        {
+            "name": "Шампиньоны",
+            "category": "vegetable",
+            "weight": [15, 30, 45],
+            "price": 0.20,
+            "maximum": 3,
+            "icon": "img/icons/agaricus.png",
+            "imgs": ["img/ingredients/agaricus1.png", "img/ingredients/agaricus2.png", "img/ingredients/agaricus3.png"]
+        },
+        {
+            "name": "Сыр",
+            "category": "cheese",
+            "weight": [80],
+            "price": 1.20,
+            "maximum": 1,
+            "icon": "img/icons/cheese.png",
+            "imgs": ["img/ingredients/cheese.png"]
+        },
+        {
+            "name": "Пармезан",
+            "category": "cheese",
+            "weight": [20],
+            "price": 1.55,
+            "maximum": 1,
+            "icon": "img/icons/parmesan.png",
+            "imgs": ["img/ingredients/parmesan.png"]
+        },
+        {
+            "name": "Барбекю",
+            "category": "sauce",
+            "weight": [30],
+            "price": 0.60,
+            "maximum": 1,
+            "icon": "img/icons/bbq.png",
+            "imgs": ["img/ingredients/bbq.png"]
+        },
+        {
+            "name": "Сырный",
+            "category": "sauce",
+            "weight": [30],
+            "price": 0.60,
+            "maximum": 1,
+            "icon": "img/icons/cheese-dip.png",
+            "imgs": ["img/ingredients/cheese-dip.png"]
+        },
+        {
+            "name": "Кисло-сладкий",
+            "category": "sauce",
+            "weight": [30],
+            "price": 0.60,
+            "maximum": 1,
+            "icon": "img/icons/sweat-sour.png",
+            "imgs": ["img/ingredients/sweat-sour.png"]
+        },
+        {
+            "name": "Чесночный",
+            "category": "sauce",
+            "weight": [30],
+            "price": 0.60,
+            "maximum": 1,
+            "icon": "img/icons/garlic-dip.png",
+            "imgs": ["img/ingredients/garlic-dip.png"]
+        },
+        {
+            "name": "Горчичный",
+            "category": "sauce",
+            "weight": [30],
+            "price": 0.60,
+            "maximum": 1,
+            "icon": "img/icons/mustard.png",
+            "imgs": ["img/ingredients/mustard.png"]
+        },
+        {
+            "name": "Шрирача(острый)",
+            "category": "sauce",
+            "weight": [15],
+            "price": 1.30,
+            "maximum": 1,
+            "icon": "img/icons/sriracha.png",
+            "imgs": ["img/ingredients/sriracha.png"]
+        }
+    ]
+}

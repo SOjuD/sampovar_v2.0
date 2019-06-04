@@ -1,0 +1,44 @@
+
+
+mixin open_slider(name, arr)
+    .slider-wrap
+        div(class='swiper-container ' + name + '-slider')
+            .swiper-wrapper.section
+                each path in arr
+                    .swiper-slide
+                        .an.go-prew(data-src='img/' + path + '.jpg')
+                            img.prew(src='img/' + path + '-min.jpg', alt='img')
+                            span.zoom
+            .swiper-button-prev
+            .swiper-button-next
+        div(class='swiper-pagination ' + name + '-pagination')
+        .btnP
+        .btnN
+
+
+mixin simple_slider(name, arr)
+    .slider-wrap
+        div(class='swiper-container #{name}-slider')
+            .swiper-wrapper
+                each pos in arr
+                    .swiper-slide
+                        .name=pos.name
+                        p=pos.text
+            .swiper-button-prev
+            .swiper-button-next
+        div(class='swiper-pagination #{name}-pagination')
+        .btnP
+        .btnN
+
+//- .slider-wrap
+    .swiper-container.swiper-slider
+        .swiper-wrapper.section
+                .swiper-slide
+                    .an.go-prew(data-src='img/1.jpg')
+                        img.prew(src='img/1-min.jpg', alt='img')
+                        span.zoom
+        .swiper-button-prev
+        .swiper-button-next
+    .swiper-pagination.swiper-pagination
+    .btnP
+    .btnN

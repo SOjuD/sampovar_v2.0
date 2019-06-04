@@ -1,0 +1,69 @@
+
+@import "_basis"
+// @import "fonts"
+
+
+
+
+
+
+
+
+//      ------ custom css ---------
+
+
+@keyframes indicate
+    0%
+        transform: translateX(-50%)
+    100%
+        transform: translate(-50%, 20%)
+
+.header-banner
+    width: 100%
+    +flex(center, center)
+    background: url(../img/header_bg.jpg) no-repeat
+    background-position: center
+    background-size: cover
+    position: relative
+    .container
+        min-height: 580px
+        +flex(center, center)
+        position: relative
+        h1 
+            font-size: 3rem
+            text-align: center
+            background-color: rgba($text, .8)
+            max-width: 850px
+            padding: 30px 40px
+            font-weight: 700
+        .slice
+            position: absolute
+            bottom: 15%
+            left: 50%
+            transform: translateX(-50%)
+            animation: indicate .6s ease-in-out infinite alternate
+    &:before
+        +pseudo 
+        bottom: -1px
+        left: 0
+        width: 100%
+        height: 16px
+        background: url(../img/border.png) repeat center
+.constructor
+    background: url(../img/main_bg.jpg) repeat
+
+
+
+
+
+        
+
+
+
+
+
+
+@import "media"  //----Always at the and
+
+
+    
