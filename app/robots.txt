@@ -1,4 +1,0 @@
-User-agent: *
-
-Host: http://rem-ok.by/
-Sitemap: http://rem-ok.by/sitemap.xml

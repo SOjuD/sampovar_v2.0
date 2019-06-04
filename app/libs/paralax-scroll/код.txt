@@ -1,8 +1,0 @@
-$(document).ready(function(){
-	   paralaxFon();
-   }); 
-function paralaxFon(){
-		$("#u949, #u1447").attr({"data-enllax-ratio":"-.3", "data-enllax-type":"foreground"}).css({"margin-top":"110px"});
-		 $("#u1669,#u1879, .list").attr({"data-enllax-ratio":"-.3", "data-enllax-type":"foreground"});
-	   $(window).enllax();
-}
