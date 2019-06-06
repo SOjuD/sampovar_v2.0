@@ -51,12 +51,38 @@
         background: url(../img/border.png) repeat center
 .constructor
     background: url(../img/main_bg.jpg) repeat
+    overflow: visible
+    .sec_title
+        position: sticky
+        top: 0
+        display: block
+    .container
+        +flex(space-around, flex-start)
     .ingredients
         width: 100%
         max-width: 410px
     .pizza-view
         width: 100%
         max-width: 380px
+        text-align: center
+        .pizza-img
+            img 
+                width: 100%
+        #restart
+            margin-top: 30px
+            width: 240px
+            height: 50px
+            border: 2px solid $accent
+            border-radius: 10em
+            color: $black
+            font-weight: 700
+            background: none
+            transition: .6s
+            img 
+                vertical-align: middle
+                margin-left: 5px
+            &:hover
+                border-color: #000
     .paycheck
         width: 100%
         max-width: 370px
