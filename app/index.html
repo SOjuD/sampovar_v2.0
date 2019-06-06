@@ -36,19 +36,19 @@
         <h2 class="sec_title">Конструктор пиццы</h2>
         <div class="container">
           <div class="ingredients">
-            <div class="step1"> 
+            <div class="step" id="step1"> 
               <div class="step_title">01. Размер:</div>
             </div>
-            <div class="step2"> 
+            <div class="step" id="step2"> 
               <div class="step_title">01. Тесто:</div>
             </div>
-            <div class="step3"> 
+            <div class="step" id="step3"> 
               <div class="step_title">03. Основа пиццы:</div>
             </div>
-            <div class="step4">
+            <div class="step" id="step4">
               <div class="step_title">04. Основные ингредиениты:</div>
             </div>
-            <div class="step5"> 
+            <div class="step" id="step5"> 
               <div class="step_title">05. Соусы:</div>
             </div>
           </div>
@@ -62,19 +62,45 @@
               <div class="check-list">
                 <div class="check-list-header">Состав вашей пиццы</div>
                 <ul>
-                  <li><span class="product-name">Тесто тонкое</span><span class="product-remove"> </span><span class="product-price"> <span>1.2</span>р.</span><span class="product-count">1</span></li>
-                  <li><span class="product-name">Томатная основа</span><span class="product-remove"> </span><span class="product-price"> <span>2.2</span>р.</span><span class="product-count">1</span></li>
-                  <li><span class="product-name">Ветчина</span><span class="product-remove"> </span><span class="product-price"> <span>1.3</span>р.</span><span class="product-count">1</span></li>
+                  <li><span class="product-name">Тесто тонкое</span><span class="product-remove"> </span><span class="product-price"> <span>0</span>р.</span><span class="product-count">1</span></li>
+                  <li><span class="product-name">Томатная основа</span><span class="product-remove"> </span><span class="product-price"> <span>0</span>р.</span><span class="product-count">1</span></li>
+                  <li><span class="product-name">Ветчина</span><span class="product-remove"> </span><span class="product-price"> <span>0</span>р.</span><span class="product-count">1</span></li>
                 </ul>
               </div>
-              <div class="total-price">Цена: <span class="price-container">15</span> р.</div>
-              <div class="total-weight">Общий вес: <span class="weight-container">1000</span> гр.</div>
+              <div class="total-price">Цена: <span class="price-container">0</span> р.</div>
+              <div class="total-weight">Общий вес: <span class="weight-container">0</span> гр.</div>
               <button class="main-button" id="send-to-cart">Добавить в корзину</button>
             </div>
           </div>
         </div>
       </section>
     </main>
+    <template id="select_size">
+      <label>
+        <input type="radio" name="size"><span></span>
+      </label>
+    </template>
+    <template id="select_dough">
+      <label>
+        <input type="radio" name="doughType"><span></span>
+      </label>
+    </template>
+    <template id="select_base">
+      <label>
+        <input type="radio" name="base"><span></span>
+      </label>
+    </template>
+    <template id="select_dip">
+      <div class="dip_item"><img src="" alt="">
+        <div class="price"></div>
+        <div class="name"></div>
+        <div class="controll">
+          <div class="remove"></div>
+          <div class="current_count">0</div>
+          <div class="add"></div>
+        </div>
+      </div>
+    </template>
     <footer id="contacts">
       <div class="container">
         <div class="col">

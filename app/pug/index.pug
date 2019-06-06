@@ -5,15 +5,15 @@ block append body
 			h2.sec_title Конструктор пиццы
 			.container
 				.ingredients
-					.step1 
+					#step1.step 
 						.step_title 01. Размер:
-					.step2 
+					#step2.step 
 						.step_title 01. Тесто:
-					.step3 
+					#step3.step 
 						.step_title 03. Основа пиццы:
-					.step4
+					#step4.step
 						.step_title 04. Основные ингредиениты:
-					.step5 
+					#step5.step 
 						.step_title 05. Соусы:
 				.pizza-view
 					.pizza-img
@@ -33,32 +33,32 @@ block append body
 									span.product-name Тесто тонкое
 									span.product-remove 
 									span.product-price 
-										span 1.2
+										span 0
 										| р.
 									span.product-count 1
 								li
 									span.product-name Томатная основа
 									span.product-remove 
 									span.product-price 
-										span 2.2
+										span 0
 										| р.
 									span.product-count 1
 								li
 									span.product-name Ветчина
 									span.product-remove 
 									span.product-price 
-										span 1.3
+										span 0
 										| р.
 									span.product-count 1
 						.total-price Цена: 
-							span.price-container 15
+							span.price-container 0
 							|  р.
 						.total-weight Общий вес: 
-							span.weight-container 1000
+							span.weight-container 0
 							|  гр.
 						button.main-button#send-to-cart Добавить в корзину
 			
-
+	include template/templates
 	include template/footer
 
 
