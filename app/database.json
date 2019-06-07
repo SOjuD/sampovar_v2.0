@@ -174,7 +174,7 @@
             "weight": [15, 30, 45],
             "price": 0.17,
             "maximum": 3,
-            "icon": "img/icons/copearn.png",
+            "icon": "img/icons/pea.png",
             "imgs": ["img/ingredients/pea1.png", "img/ingredients/pea2.png", "img/ingredients/pea3.png"]
         },
         {

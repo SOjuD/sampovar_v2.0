@@ -47,6 +47,25 @@
             </div>
             <div class="step" id="step4">
               <div class="step_title">04. Основные ингредиениты:</div>
+              <div class="ingredients_item">
+                <p>*Рекомендуемое количество ингредиентов — не более 10. </p>
+                <div class="labels">
+                  <div class="ingredients_label meat_label active_label" data-group="meat"><img src="img/labels/meat.png" alt="Мясные ингредиенты" data-src="img/labels/meat.png" data-active-src="img/labels/active_meat.png">
+                    <div class="name">Мясные ингредиенты</div>
+                  </div>
+                  <div class="ingredients_label vegetable_label" data-group="vegetable"><img src="img/labels/vegetable.png" alt="Овощи и фрукты" data-src="img/labels/vegetable.png" data-active-src="img/labels/active_vegetable.png">
+                    <div class="name">Овощи и фрукты</div>
+                  </div>
+                  <div class="ingredients_label cheese_label" data-group="cheese"><img src="img/labels/cheese.png" alt="Сыр" data-src="img/labels/cheese.png" data-active-src="img/labels/cheese.png">
+                    <div class="name">Сыр</div>
+                  </div>
+                </div>
+                <div class="groups">
+                  <div id="meat"></div>
+                  <div id="vegetable"></div>
+                  <div id="cheese"></div>
+                </div>
+              </div>
             </div>
             <div class="step" id="step5"> 
               <div class="step_title">05. Соусы:</div>
@@ -92,6 +111,17 @@
     </template>
     <template id="select_dip">
       <div class="dip_item"><img src="" alt="">
+        <div class="price"></div>
+        <div class="name"></div>
+        <div class="controll">
+          <div class="remove"></div>
+          <div class="current_count">0</div>
+          <div class="add"></div>
+        </div>
+      </div>
+    </template>
+    <template id="select_ingredients">
+      <div class="ingredient_item"><img src="" alt="">
         <div class="price"></div>
         <div class="name"></div>
         <div class="controll">

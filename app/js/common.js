@@ -76,6 +76,13 @@ var model = {
     });
     view.displayDips(dips);
   },
+  buildIngredients(data){
+    var ingredients = data.ingredients;
+    var ingredientsReady = ingredients.filter(ingredient=>{
+      return ingredient.category == 'Мясные ингредиенты' || ingredient.category == 'Овощи и фрукты' || ingredient.category == 'Сыр';
+    });
+    view.displayIngredients(ingredientsReady);
+  },
 };
 
 
@@ -138,6 +145,30 @@ var view = {
       dipCont.append(current);
 
     });
+  },
+  displayIngredients(ingredients){
+    var ingredientsCont = document.getElementById('step4');
+    var meatCont = document.getElementById('meat');
+    var vegetableCont = document.getElementById('vegetable');
+    var cheeseCont = document.getElementById('cheese');
+    var ingredientsTemp = document.getElementById('select_ingredients').content.querySelector('.ingredient_item');
+    ingredients.forEach(element => {
+      var current = ingredientsTemp.cloneNode(true);
+      var currentImg = current.querySelector('img');
+      var currentPrice = current.querySelector('.price');
+      var currentName = current.querySelector('.name');
+
+      currentImg.setAttribute('src', element.icon);
+      currentImg.setAttribute('alt', element.name);
+      currentPrice.textContent = `${element.price} р.`;
+      currentName.textContent = element.name;
+
+
+      if(element.category == 'Мясные ингредиенты') meatCont.append(current);
+      else if(element.category == 'Овощи и фрукты') vegetableCont.append(current);
+      else if(element.category == 'Сыр') cheeseCont.append(current);
+
+    });
   }
 };
 
@@ -153,6 +184,7 @@ model.getdata('../database.json').then(
     model.buildSize(request);
     model.buildDough(request);
     model.buildBases(request);
+    model.buildIngredients(request);
     model.buildDips(request);
   },
   function(err){console.log(err)}

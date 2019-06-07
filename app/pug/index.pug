@@ -13,6 +13,22 @@ block append body
 						.step_title 03. Основа пиццы:
 					#step4.step
 						.step_title 04. Основные ингредиениты:
+						.ingredients_item
+							p *Рекомендуемое количество ингредиентов — не более 10. 
+							.labels
+								.ingredients_label.meat_label.active_label(data-group="meat")
+									img(src="img/labels/meat.png", alt="Мясные ингредиенты" data-src="img/labels/meat.png" data-active-src="img/labels/active_meat.png")
+									.name Мясные ингредиенты
+								.ingredients_label.vegetable_label(data-group="vegetable")
+									img(src="img/labels/vegetable.png", alt="Овощи и фрукты" data-src="img/labels/vegetable.png" data-active-src="img/labels/active_vegetable.png")
+									.name Овощи и фрукты
+								.ingredients_label.cheese_label(data-group="cheese")
+									img(src="img/labels/cheese.png", alt="Сыр" data-src="img/labels/cheese.png" data-active-src="img/labels/cheese.png")
+									.name Сыр
+							.groups
+								#meat
+								#vegetable
+								#cheese
 					#step5.step 
 						.step_title 05. Соусы:
 				.pizza-view
