@@ -3,7 +3,7 @@ block append body
 	main
 		section.constructor
 			h2.sec_title Конструктор пиццы
-			.container
+			form.container
 				.ingredients
 					#step1.step 
 						.step_title 01. Размер:
@@ -23,14 +23,15 @@ block append body
 									img(src="img/labels/vegetable.png", alt="Овощи и фрукты" data-src="img/labels/vegetable.png" data-active-src="img/labels/active_vegetable.png")
 									.name Овощи и фрукты
 								.ingredients_label.cheese_label(data-group="cheese")
-									img(src="img/labels/cheese.png", alt="Сыр" data-src="img/labels/cheese.png" data-active-src="img/labels/cheese.png")
+									img(src="img/labels/cheese.png", alt="Сыр" data-src="img/labels/cheese.png" data-active-src="img/labels/active_cheese.png")
 									.name Сыр
 							.groups
-								#meat
-								#vegetable
-								#cheese
+								#meat.ingredients-wrap
+								#vegetable.ingredients-wrap
+								#cheese.ingredients-wrap
 					#step5.step 
 						.step_title 05. Соусы:
+						#dip.ingredients-wrap
 				.pizza-view
 					.pizza-img
 						img(src="img/board.png", alt="pizza-border")

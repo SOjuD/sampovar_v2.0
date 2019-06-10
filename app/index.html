@@ -34,7 +34,7 @@
     <main>
       <section class="constructor">
         <h2 class="sec_title">Конструктор пиццы</h2>
-        <div class="container">
+        <form class="container">
           <div class="ingredients">
             <div class="step" id="step1"> 
               <div class="step_title">01. Размер:</div>
@@ -56,19 +56,20 @@
                   <div class="ingredients_label vegetable_label" data-group="vegetable"><img src="img/labels/vegetable.png" alt="Овощи и фрукты" data-src="img/labels/vegetable.png" data-active-src="img/labels/active_vegetable.png">
                     <div class="name">Овощи и фрукты</div>
                   </div>
-                  <div class="ingredients_label cheese_label" data-group="cheese"><img src="img/labels/cheese.png" alt="Сыр" data-src="img/labels/cheese.png" data-active-src="img/labels/cheese.png">
+                  <div class="ingredients_label cheese_label" data-group="cheese"><img src="img/labels/cheese.png" alt="Сыр" data-src="img/labels/cheese.png" data-active-src="img/labels/active_cheese.png">
                     <div class="name">Сыр</div>
                   </div>
                 </div>
                 <div class="groups">
-                  <div id="meat"></div>
-                  <div id="vegetable"></div>
-                  <div id="cheese"></div>
+                  <div class="ingredients-wrap" id="meat"></div>
+                  <div class="ingredients-wrap" id="vegetable"></div>
+                  <div class="ingredients-wrap" id="cheese"></div>
                 </div>
               </div>
             </div>
             <div class="step" id="step5"> 
               <div class="step_title">05. Соусы:</div>
+              <div class="ingredients-wrap" id="dip"></div>
             </div>
           </div>
           <div class="pizza-view">
@@ -91,7 +92,7 @@
               <button class="main-button" id="send-to-cart">Добавить в корзину</button>
             </div>
           </div>
-        </div>
+        </form>
       </section>
     </main>
     <template id="select_size">
@@ -109,25 +110,14 @@
         <input type="radio" name="base"><span></span>
       </label>
     </template>
-    <template id="select_dip">
-      <div class="dip_item"><img src="" alt="">
-        <div class="price"></div>
-        <div class="name"></div>
-        <div class="controll">
-          <div class="remove"></div>
-          <div class="current_count">0</div>
-          <div class="add"></div>
-        </div>
-      </div>
-    </template>
     <template id="select_ingredients">
       <div class="ingredient_item"><img src="" alt="">
         <div class="price"></div>
         <div class="name"></div>
-        <div class="controll">
-          <div class="remove"></div>
+        <div class="control">
+          <div class="remove">-</div>
           <div class="current_count">0</div>
-          <div class="add"></div>
+          <div class="add">+</div>
         </div>
       </div>
     </template>

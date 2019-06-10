@@ -60,6 +60,8 @@
     .ingredients
         width: 100%
         max-width: 410px
+    
+    
     .pizza-view
         width: 100%
         max-width: 380px
@@ -82,6 +84,8 @@
                 margin-left: 5px
             &:hover
                 border-color: #000
+    
+    
     .paycheck
         width: 100%
         max-width: 370px
@@ -187,8 +191,97 @@
         button
 
 
-
-        
+    .ingredients
+        .step
+            margin: 45px 0
+            .step_title
+                margin-bottom: 25px
+                font-weight: 700
+                font-size: 1.5rem
+            input 
+                display: none
+            label
+                padding-left: 25px
+                position: relative
+                margin-right: 50px
+                cursor: pointer
+                span
+                    line-height: 1.2
+                &:before, &:after
+                    +pseudo
+                    width: 15px
+                    height: 15px
+                    left: 0px
+                    top: 50%
+                    transform: translateY(-50%)
+                    border: 2px solid #000
+                    border-radius: 100%
+                &:after
+                    left: 2px
+                    border: none
+                    background-color: $accent
+                    opacity: 0
+                    transition: .4s
+            .checked
+                &:after
+                    opacity: 1
+        .labels
+            width: 100%
+            +flex(space-around, flex-stert)
+            .ingredients_label
+                width: 110px
+                text-align: center
+                margin: 10px
+                cursor: pointer
+                .name 
+                    font-weight: 700
+        .ingredients-wrap
+            width: 100%
+            +flex(space-between, stretch)
+        .ingredient_item
+            width: 115px
+            margin: 10px
+            text-align: center
+            +flex(space-between, center)
+            flex-direction: column
+            .price
+                background-color: $text
+                color: $invert
+                width: 70px
+                line-height: 30px
+                text-align: center
+                border-radius: 10em
+                font-weight: 600
+                margin: -20px auto 10px auto
+                z-index: 2
+                position: relative
+            .name
+                text-align: center
+                font-weight: 600
+                margin-bottom: 10px
+        .control
+            margin: 0 auto
+            width: 94px
+            height: 34px
+            +flex(center, center)
+            border: 2px solid #000
+            border-radius: 10em
+            overflow: hidden
+            *
+                line-height: 30px
+                font-size: 1.2rem
+                height: 100%
+                width: 30px
+                +flex(center, center)
+            .remove, .add
+                font-size: 2rem
+                cursor: pointer
+                transition: .4s
+                &:hover
+                    background-color: $text
+                    color: $invert
+        #step4 .ingredients-wrap
+            display: none
 
 
 

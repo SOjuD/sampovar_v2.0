@@ -277,7 +277,7 @@
             "imgs": ["img/ingredients/mustard.png"]
         },
         {
-            "name": "Шрирача(острый)",
+            "name": "Шрирача (острый)",
             "category": "Соусы",
             "weight": [15],
             "price": 1.30,
