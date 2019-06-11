@@ -51,21 +51,17 @@
         background: url(../img/border.png) repeat center
 .constructor
     background: url(../img/main_bg.jpg) repeat
-    overflow: visible
-    .sec_title
-        position: sticky
-        top: 0
     .container
         +flex(space-around, flex-start)
-    .ingredients
-        width: 100%
-        max-width: 410px
+        position: relative
     
-    
+
     .pizza-view
         width: 100%
         max-width: 380px
         text-align: center
+        position: sticky
+        top: 10px
         .pizza-img
             img 
                 width: 100%
@@ -87,6 +83,8 @@
     
     
     .paycheck
+        position: sticky
+        top: 10px
         width: 100%
         max-width: 370px
         .paycheck-wrap
@@ -192,6 +190,8 @@
 
 
     .ingredients
+        width: 100%
+        max-width: 410px
         .step
             margin: 45px 0
             .step_title
@@ -244,6 +244,9 @@
             text-align: center
             +flex(space-between, center)
             flex-direction: column
+            img 
+                width: 100%
+                max-width: 115px
             .price
                 background-color: $text
                 color: $invert

@@ -13,79 +13,108 @@
     .container
         width: 100%
     .top-line
-        .top-logo
-            display: none
         .top-menu
             margin: 0 2%
+    .constructor
+        .ingredients
+            max-width: 380px
+            .labels
+                .ingredients_label
+                    width: 100px
+            .ingredient_item 
+                width: 100px
+        .pizza-view
+            max-width: 330px
+        .paycheck
+            max-width: 330px
 // ≥992px
 @media only screen and (max-width :1024px)
     body, html
         font-size: 14px
     .container
         padding: 5px
+    .constructor
+        .pizza-view
+            order: 0
+            position: static
+        .ingredients
+            order: 1
+            max-width: 100%
+            #step4 
+                .ingredients-wrap
+                    justify-content: space-around
+                .ingredient_item 
+                    margin: 10px
+        .step 
+            .step_wrap
+                display: none
+        .paycheck
+            order: 2
+            position: static
 
                 
     // ---------------------меню в 1 строку---------------------
     .top-line
-        padding-top: 10px
-        padding-bottom: 10px
-        .top-logo
-            position: absolute
-            left: 10px
-            top: 10px
-            z-index: 3
-        .top-contact
-            position: absolute
-            top: 5px
-            right: 10px
-            z-index: 2
-            .phone
-                line-height: 1.65
         .container
-            padding: 0
-        .top-menu
-            position: relative
-            width: 100%
-            max-width: 100%
-            margin: 0
-            .hamburger
-                top: 10%
-                margin-left: 20px
-                display: block
-            ul
-                position: absolute
-                width: 100%
-                text-align: center
-                background-color: inherit
-                top: 90%
-                left: 0
+            justify-content: space-around
+        .top-contact
+            order: 0
+            width: 100px
+            img:nth-child(3),
+            img:nth-child(4),
+            img:nth-child(5),
                 display: none
-                margin: 0
-                li
-                    flex-basis: 100%
-                    text-align: center
-                    padding: 5px
-                    a 
-                        padding: 10px
-                        font-size: 1.8rem
+            .phone 
+                font-size: 1.5rem
+        .logo2
+            order: 1
+            width: 90px
+            padding: 10px
+            background-position: top center
+            img 
+                width: 100%
+            
+        .cart
+            width: 100px
+            text-align: center
+            #total
+                left: 55%
+            order: 2
+        .top-logo
+            display: none
+        .clock
+            display: none
 
 // ≥768px
 @media only screen and (max-width : 768px)
     footer 
         .map
+            display: none
+        .col 
             width: 100%
-            height: 350px
         .contacts
             padding: 20px 10px
             width: 100%
-            +flex
+            max-width: 100%
         
 
 
 // ≥576px
 @media only screen and (max-width : 576px)
-    // 
-
+    .header-banner
+        .container
+            h1 
+                font-size: 2.2rem
+    .constructor
+        .ingredients
+            .ingredients-wrap
+                justify-content: space-around
+                .ingredient_item 
+                    margin: 10px
+                    width: 80px
+            .labels
+                .ingredients_label
+                    width: 80px
 
 
     

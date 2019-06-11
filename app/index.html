@@ -17,9 +17,9 @@
     <div class="top-line">
       <div class="container"><a class="top-logo"><img src="img/logo.png" alt="sportpizza.by"></a>
         <div class="clock"><img src="img/clock.png" alt="clock">с 10:00 до 23:00</div>
-        <div class="logo2"><img src="img/logo2.png" alt="sam-povar.by"></div>
-        <div class="top-contact"><img src="img/phone.png" alt="png"><a class="phone" href="tel:7235">7235</a><img src="img/mts.png" alt="mts"><img src="img/velcom.png" alt="velcom"><img src="img/life.png" alt="life"></div>
-        <div class="cart"><img src="img/cart.png" alt="cart">
+        <div class="logo2"><img src="img/logo2.png" alt="sam-povar.by"></div><a class="top-contact" href="tel:7235"><img src="img/phone.png" alt="png">
+          <div class="phone">7235</div><img src="img/mts.png" alt="mts"><img src="img/velcom.png" alt="velcom"><img src="img/life.png" alt="life"></a>
+        <div class="cart"><img src="img/cart.svg" alt="cart">
           <div id="total">1</div>
         </div>
       </div>
@@ -34,33 +34,36 @@
     <main>
       <section class="constructor">
         <h2 class="sec_title">Конструктор пиццы</h2>
-        <form class="container">
+        <div class="container">
           <div class="ingredients">
             <div class="step" id="step1"> 
               <div class="step_title">01. Размер:</div>
+              <div class="step_wrap"></div>
             </div>
             <div class="step" id="step2"> 
-              <div class="step_title">01. Тесто:</div>
+              <div class="step_title">02. Тесто:</div>
+              <div class="step_wrap"></div>
             </div>
             <div class="step" id="step3"> 
               <div class="step_title">03. Основа пиццы:</div>
+              <div class="step_wrap"></div>
             </div>
             <div class="step" id="step4">
               <div class="step_title">04. Основные ингредиениты:</div>
               <div class="ingredients_item">
                 <p>*Рекомендуемое количество ингредиентов — не более 10. </p>
                 <div class="labels">
-                  <div class="ingredients_label meat_label active_label" data-group="meat"><img src="img/labels/meat.png" alt="Мясные ингредиенты" data-src="img/labels/meat.png" data-active-src="img/labels/active_meat.png">
+                  <div class="ingredients_label meat_label active_label" data-group="meat"><img src="img/labels/meat.svg" alt="Мясные ингредиенты" data-src="img/labels/meat.svg" data-active-src="img/labels/active_meat.svg">
                     <div class="name">Мясные ингредиенты</div>
                   </div>
-                  <div class="ingredients_label vegetable_label" data-group="vegetable"><img src="img/labels/vegetable.png" alt="Овощи и фрукты" data-src="img/labels/vegetable.png" data-active-src="img/labels/active_vegetable.png">
+                  <div class="ingredients_label vegetable_label" data-group="vegetable"><img src="img/labels/vegetable.svg" alt="Овощи и фрукты" data-src="img/labels/vegetable.svg" data-active-src="img/labels/active_vegetable.svg">
                     <div class="name">Овощи и фрукты</div>
                   </div>
-                  <div class="ingredients_label cheese_label" data-group="cheese"><img src="img/labels/cheese.png" alt="Сыр" data-src="img/labels/cheese.png" data-active-src="img/labels/active_cheese.png">
+                  <div class="ingredients_label cheese_label" data-group="cheese"><img src="img/labels/cheese.svg" alt="Сыр" data-src="img/labels/cheese.svg" data-active-src="img/labels/active_cheese.svg">
                     <div class="name">Сыр</div>
                   </div>
                 </div>
-                <div class="groups">
+                <div class="groups step_wrap">
                   <div class="ingredients-wrap" id="meat"></div>
                   <div class="ingredients-wrap" id="vegetable"></div>
                   <div class="ingredients-wrap" id="cheese"></div>
@@ -69,7 +72,9 @@
             </div>
             <div class="step" id="step5"> 
               <div class="step_title">05. Соусы:</div>
-              <div class="ingredients-wrap" id="dip"></div>
+              <div class="step_wrap">
+                <div class="ingredients-wrap" id="dip"></div>
+              </div>
             </div>
           </div>
           <div class="pizza-view">
@@ -92,7 +97,7 @@
               <button class="main-button" id="send-to-cart">Добавить в корзину</button>
             </div>
           </div>
-        </form>
+        </div>
       </section>
     </main>
     <template id="select_size">

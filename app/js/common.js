@@ -76,7 +76,7 @@ window.onload = function(){
       dateContainer.textContent = date.getDate()+'.'+date.getMonth()+'.'+date.getFullYear();
     },
     displaySize(sizes){
-      var sizeCont = document.getElementById('step1');
+      var sizeCont = document.querySelector('#step1 .step_wrap');
       var sizeTemp = document.getElementById('select_size').content.querySelector('label');
       sizes.forEach(element => {
         var current = sizeTemp.cloneNode(true);
@@ -88,7 +88,7 @@ window.onload = function(){
       });
     },
     displayDough(doughTypes){
-      var doughCont = document.getElementById('step2');
+      var doughCont = document.querySelector('#step2 .step_wrap');
       var doughTemp = document.getElementById('select_dough').content.querySelector('label');
       doughTypes.forEach(element => {
         var current = doughTemp.cloneNode(true);
@@ -100,7 +100,7 @@ window.onload = function(){
       });
     },
     displayBases(bases){
-      var baseCont = document.getElementById('step3');
+      var baseCont = document.querySelector('#step3 .step_wrap');
       var baseTemp = document.getElementById('select_base').content.querySelector('label');
       bases.forEach(element => {
         var current = baseTemp.cloneNode(true);
@@ -203,7 +203,22 @@ window.onload = function(){
       drawActiveIngredientsGroup();
     });
 
+    if($(window).width() <= 1024){
+      $('.step:first').addClass('active_step').find('.step_wrap').css('display', 'block');
+
+
+      $('.step:not(.active_step)').click(function(){
+         var active = $(this).parents('.ingredients').find('.active_step');
+         active.find('.step_wrap').slideUp(300);
+         active.removeClass('active_step');
+         $(this).addClass('active_step');
+         $(this).find('.step_wrap').slideDown(300);
+      });
+    }
+
   };
+
+  
   
   }
 
