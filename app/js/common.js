@@ -207,12 +207,14 @@ window.onload = function(){
       $('.step:first').addClass('active_step').find('.step_wrap').css('display', 'block');
 
 
-      $('.step:not(.active_step)').click(function(){
-         var active = $(this).parents('.ingredients').find('.active_step');
-         active.find('.step_wrap').slideUp(300);
-         active.removeClass('active_step');
-         $(this).addClass('active_step');
-         $(this).find('.step_wrap').slideDown(300);
+      $('.step').click(function(){
+        if( !$(this).hasClass('active_step') ){
+          var active = $(this).parents('.ingredients').find('.active_step');
+          active.find('.step_wrap').slideUp(300);
+          active.removeClass('active_step');
+          $(this).addClass('active_step');
+          $(this).find('.step_wrap').slideDown(300);
+        }
       });
     }
 
