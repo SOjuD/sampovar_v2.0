@@ -73,7 +73,7 @@ window.onload = function(){
     displayDate(){
       var date = new Date;
       var dateContainer = document.querySelector('.date');
-      dateContainer.textContent = date.getDate()+'.'+date.getMonth()+'.'+date.getFullYear();
+      dateContainer.textContent = date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getFullYear();
     },
     displaySize(sizes){
       var sizeCont = document.querySelector('#step1 .step_wrap');
@@ -154,7 +154,44 @@ window.onload = function(){
     }
   };
   
-  var controller = {};
+  var controller = {
+    preparationElems(request){
+      model.buildSize(request);
+      model.buildDough(request);
+      model.buildBases(request);
+      model.buildIngredients(request);
+      model.buildDips(request);
+      controller.createOrLoadCurrentPizza();
+    },
+    // создаём новую пиццу или прорисовываем параметры существующей пиццы
+    createOrLoadCurrentPizza(){ 
+      if( !window.localStorage.currentPizza ){
+        window.localStorage.currentPizza = JSON.stringify({});
+      }else{ // прорисовываем выбранные параметры пиццы
+        var currentPizza = JSON.parse(window.localStorage.currentPizza);
+        for( key in currentPizza){ 
+          var param = document.getElementsByName(key);  
+          param.forEach((elem)=>{
+            if(elem.value == currentPizza[key]){
+              elem.parentElement.classList.add('checked');
+            }
+          });
+        };
+      }
+    },
+    selectParams(e){
+
+      var currentPizza = JSON.parse(window.localStorage.currentPizza);
+      var paramName = e.target.name;
+      var paramVal = e.target.value;
+
+
+      currentPizza[paramName] = paramVal;
+      currentPizza = JSON.stringify(currentPizza);
+      window.localStorage.currentPizza = currentPizza;
+
+    },
+  };
   
   
   
@@ -163,13 +200,14 @@ window.onload = function(){
   
   model.getdata('../database.json').then(
     function(request){
-      model.buildSize(request);
-      model.buildDough(request);
-      model.buildBases(request);
-      model.buildIngredients(request);
-      model.buildDips(request);
+      controller.preparationElems(request);
 
       jqueryFunctions();
+
+      var params = document.getElementsByClassName('ingredients')[0];
+      params.addEventListener('change', ()=>{
+        controller.selectParams(event)
+      });
 
     },
     function(err){console.log(err)}

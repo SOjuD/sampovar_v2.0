@@ -4,13 +4,15 @@
             "name": "Тонкое",
             "weight": 340,
             "size": "30 см",
-            "price": 10.50
+            "price": 10.50,
+            "img": "img/dough-slim.png"
         },
         {
             "name": "Пышное",
             "weight": 580,
             "size": "30 см",
-            "price": 10.50
+            "price": 10.50,
+            "img": "img/dough-fat.png"
         }
     ],
     "base": ["Томатная", "Майонезная"],
