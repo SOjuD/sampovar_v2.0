@@ -140,6 +140,8 @@ window.onload = function(){
         var currentPrice = current.querySelector('.price');
         var currentName = current.querySelector('.name');
   
+        current.dataset.max = element.maximum || 1;
+        current.dataset.price = element.price || 0;
         currentImg.setAttribute('src', element.icon);
         currentImg.setAttribute('alt', element.name);
         currentPrice.textContent = `${element.price} р.`;
@@ -151,7 +153,21 @@ window.onload = function(){
         else if(element.category == 'Сыр') cheeseCont.append(current);
   
       });
-    }
+    },
+    // writeParam(){
+    //   var paramTempl = document.getElementById('paycheckLi').content.querySelector('li');
+    //   var paramCont = document.getElementById('paycheckContainer');
+    //   paramCont.innerHTML = '';
+    //   var currentPizza = JSON.parse(window.localStorage.currentPizza);
+    //   for( key in currentPizza){
+    //     var currenParam = paramTempl.cloneNode(true);
+    //     var currentParamName = currenParam.querySelector('.product-name');
+    //     currentParamName.textContent = currentPizza[key];
+    //     paramCont.appendChild(currenParam);
+        
+    //   }
+
+    // }
   };
   
   var controller = {
@@ -177,8 +193,10 @@ window.onload = function(){
             }
           });
         };
+        // view.writeParam();
       }
     },
+    // добавляем парраметры пиццы
     selectParams(e){
 
       var currentPizza = JSON.parse(window.localStorage.currentPizza);
@@ -190,6 +208,55 @@ window.onload = function(){
       currentPizza = JSON.stringify(currentPizza);
       window.localStorage.currentPizza = currentPizza;
 
+      // view.writeParam();
+
+    },
+    addIngredient(e){
+      var currentPizza = JSON.parse(window.localStorage.currentPizza);
+      var currentPizzaIngredients = currentPizza.ingredients || [];
+      var that = e.target;
+      var ingredient = that.closest('.ingredient_item');
+      var ingredientName = ingredient.querySelector('.name').textContent;
+      var max = ingredient.dataset.max || 1;
+      var price = ingredient.dataset.price || 0;
+
+      function findIngredient(){
+       for(ingredient in currentPizzaIngredients){
+          if(currentPizzaIngredients[ingredient].name == ingredientName) {
+            return currentPizzaIngredients[ingredient];
+          }
+        };
+      };
+      if( findIngredient() ){
+        var ingredient = findIngredient();
+        if( e.target.classList.contains('add') ){
+          if(ingredient.count < ingredient.max){
+            ingredient.count += 1;
+            ingredient.totalPrice = +((ingredient.price * ingredient.count).toFixed(1));
+          }else{
+            alert('Извините, это мамсимум для данного ингредиента!');
+          }
+        }else if( e.target.classList.contains('remove') ){
+          if(ingredient.count > 0){
+            ingredient.count -= 1;
+            ingredient.totalPrice = +((ingredient.price * ingredient.count).toFixed(1));
+          }
+        }
+
+      }else{
+          var ingredient = {};
+          ingredient.name = ingredientName;
+          ingredient.max = max;
+          ingredient.price = price;
+          ingredient.count = 1;
+          ingredient.totalPrice = +((ingredient.price * ingredient.count).toFixed(1));
+          currentPizzaIngredients.push(ingredient);
+      }
+
+
+      currentPizza.ingredients = currentPizzaIngredients;
+      currentPizza = JSON.stringify(currentPizza);
+      window.localStorage.currentPizza = currentPizza;
     },
   };
   
@@ -206,7 +273,12 @@ window.onload = function(){
 
       var params = document.getElementsByClassName('ingredients')[0];
       params.addEventListener('change', ()=>{
-        controller.selectParams(event)
+        controller.selectParams(event);
+      });
+      params.addEventListener('click', (e)=>{
+        if(e.target.classList.contains('add') || e.target.classList.contains('remove')){
+          controller.addIngredient(e);
+        }
       });
 
     },

@@ -1,21 +1,21 @@
 {
     "dough": [
         {
-            "name": "Тонкое",
+            "name": "Тонкое тесто",
             "weight": 340,
             "size": "30 см",
             "price": 10.50,
             "img": "img/dough-slim.png"
         },
         {
-            "name": "Пышное",
+            "name": "Пышное тесто",
             "weight": 580,
             "size": "30 см",
             "price": 10.50,
             "img": "img/dough-fat.png"
         }
     ],
-    "base": ["Томатная", "Майонезная"],
+    "base": ["Томатная основа", "Майонезная основа"],
     "ingredients": [
         {
             "name": "Ветчина",
