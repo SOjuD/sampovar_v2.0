@@ -234,7 +234,7 @@
             "imgs": ["img/ingredients/parmesan.png"]
         },
         {
-            "name": "Барбекю",
+            "name": "Барбекю соус",
             "category": "Соусы",
             "weight": [30],
             "price": 0.60,
@@ -243,7 +243,7 @@
             "imgs": ["img/ingredients/bbq.png"]
         },
         {
-            "name": "Сырный",
+            "name": "Сырный соус",
             "category": "Соусы",
             "weight": [30],
             "price": 0.60,
@@ -252,7 +252,7 @@
             "imgs": ["img/ingredients/cheese-dip.png"]
         },
         {
-            "name": "Кисло-сладкий",
+            "name": "Кисло-сладкий соус",
             "category": "Соусы",
             "weight": [30],
             "price": 0.60,
@@ -261,7 +261,7 @@
             "imgs": ["img/ingredients/sweat-sour.png"]
         },
         {
-            "name": "Чесночный",
+            "name": "Чесночный соус",
             "category": "Соусы",
             "weight": [30],
             "price": 0.60,
@@ -270,7 +270,7 @@
             "imgs": ["img/ingredients/garlic-dip.png"]
         },
         {
-            "name": "Горчичный",
+            "name": "Горчичный соус",
             "category": "Соусы",
             "weight": [30],
             "price": 0.60,
@@ -279,7 +279,7 @@
             "imgs": ["img/ingredients/mustard.png"]
         },
         {
-            "name": "Шрирача (острый)",
+            "name": "Шрирача (острый) соус",
             "category": "Соусы",
             "weight": [15],
             "price": 1.30,
