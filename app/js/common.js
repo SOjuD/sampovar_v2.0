@@ -110,8 +110,8 @@ window.onload = function () {
         var current = baseTemp.cloneNode(true);
         var currentSpan = current.querySelector('span');
         var currentInput = current.querySelector('input');
-        currentSpan.textContent = element;
-        currentInput.value = element;
+        currentSpan.textContent = element.name;
+        currentInput.value = element.name;
         baseCont.append(current);
       });
     },
@@ -130,6 +130,13 @@ window.onload = function () {
             return elem.weight.join(', ')
           }
         }
+        function buildImgs(elem){
+          if( Array.isArray(elem.imgs) ){
+            return elem.imgs.join(', ')
+          }
+        }
+        
+        current.dataset.imgs = buildImgs(element);
 
         current.dataset.weight = buildWeight(element);
         current.dataset.price = element.price || 0;
@@ -159,12 +166,19 @@ window.onload = function () {
         current.dataset.price = element.price || 0;
 
 
+
         function buildWeight(elem){
           if( Array.isArray(elem.weight) ){
             return elem.weight.join(', ')
           }
         }
-
+        function buildImgs(elem){
+          if( Array.isArray(elem.imgs) ){
+            return elem.imgs.join(', ')
+          }
+        }
+        
+        current.dataset.imgs = buildImgs(element);
         current.dataset.weight = buildWeight(element);
 
 
@@ -217,8 +231,8 @@ window.onload = function () {
 
       listCont.textContent = '';
 
-      priceCont.textContent = currentPizza.totalPrice || 0;
-      weightCont.textContent = currentPizza.totalWeight || 0;
+      priceCont.textContent = currentPizza.totalPrice || currentPizza.basePrice || 0;
+      weightCont.textContent = currentPizza.totalWeight || currentPizza.baseWeight || 0;
 
       if(currentPizza.size){
         var size = listTemp.cloneNode(true);
@@ -253,6 +267,41 @@ window.onload = function () {
         current.querySelector('.product-count').textContent = ingredients[item].count;
         listCont.appendChild(current);
       }
+    },
+    viewBase(elem){
+      var img = elem.img;
+      var name = elem.name;
+      var container = document.querySelector('.pizza-img');
+      var currentImg;
+
+      for(image of container.childNodes){
+        var imgName = image.dataset.name || '';
+        if( name == imgName){
+          currentImg = image;
+          console.log(image);
+          continue;
+        } else if(imgName.indexOf('тесто') >= 0){
+          console.log(1);
+          currentImg = image;
+          continue;
+        } else if(imgName.indexOf('основа') >= 0){
+          console.log(2);
+          currentImg = image;
+          continue;
+        }
+      }
+
+      if( !currentImg){
+        currentImg = document.createElement('img');
+        currentImg.dataset.name = name;
+        currentImg.src = img;
+        container.appendChild(currentImg);
+      }else{
+        currentImg.src = img;
+      }
+      
+      
+      
     },
   };
 
@@ -301,12 +350,19 @@ window.onload = function () {
 
 
       currentPizza[paramName] = paramVal;
-
-
-      for (item of dough) {
-        if (item.name == currentPizza.doughType && item.size == currentPizza.size) {
-          currentPizza.basePrice = item.price;
-          currentPizza.baseWeight = item.weight;
+      if(paramName == 'base'){
+        for(base of request[paramName]){
+          if(base.name == paramVal){
+            view.viewBase(base);
+          }
+        }
+      }else{
+        for (item of dough) {
+          if (item.name == currentPizza.doughType && item.size == currentPizza.size) {
+            currentPizza.basePrice = item.price;
+            currentPizza.baseWeight = item.weight;
+            view.viewBase(item);
+          }
         }
       }
 
@@ -325,7 +381,9 @@ window.onload = function () {
       var max = ingredient.dataset.max || 1;
       var price = ingredient.dataset.price || 0;
       var weight = ingredient.dataset.weight || '';
-      weight = weight.split(', ');
+          weight = weight.split(', ');
+      var imgs = ingredient.dataset.imgs || '';
+          imgs = imgs.split(', ');
       function findIngredient() {
         for (ingredient in currentPizzaIngredients) {
           
@@ -347,6 +405,7 @@ window.onload = function () {
             ingredient.count += 1;
             ingredient.totalPrice = +((ingredient.price * ingredient.count).toFixed(1));
             ingredient.totalWeight = +ingredient.weight[ingredient.count-1];
+            ingredient.imgs = imgs[ingredient.count-1];
           } else {
             alert('Извините, это мамсимум для данного ингредиента!');
           }
@@ -355,6 +414,7 @@ window.onload = function () {
             ingredient.count -= 1;
             ingredient.totalPrice = +((ingredient.price * ingredient.count).toFixed(1));
             ingredient.totalWeight = +ingredient.weight[ingredient.count-1];
+            ingredient.imgs = imgs[ingredient.count-1];
           } 
           if(ingredient.count == 0) {
             currentPizzaIngredients.splice(ingredientPos, 1);
@@ -371,6 +431,7 @@ window.onload = function () {
           ingredient.count = 1;
           ingredient.totalPrice = +((ingredient.price * ingredient.count).toFixed(1));
           ingredient.totalWeight = +ingredient.weight[ingredient.count-1];
+          ingredient.imgs = imgs[ingredient.count-1];
           currentPizzaIngredients.push(ingredient);
         }
       }

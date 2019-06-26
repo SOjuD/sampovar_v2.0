@@ -5,17 +5,26 @@
             "weight": 340,
             "size": "30 см",
             "price": 10.50,
-            "img": "img/dough-slim.png"
+            "img": "img/ingredients/dough-slim.png"
         },
         {
             "name": "Пышное тесто",
             "weight": 580,
             "size": "30 см",
             "price": 10.50,
-            "img": "img/dough-fat.png"
+            "img": "img/ingredients/dough-fat.png"
         }
     ],
-    "base": ["Томатная основа", "Майонезная основа"],
+    "base": [
+        {
+            "name" : "Томатная основа",
+            "img" : "img/ingredients/base-tomato.png"
+        },
+        {
+            "name" : "Майонезная основа",
+            "img" : "img/ingredients/base-mayo.png"
+        }
+    ],
     "ingredients": [
         {
             "name": "Ветчина",
