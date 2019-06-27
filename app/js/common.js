@@ -208,12 +208,15 @@ window.onload = function () {
         for(elemNode of ingredientsNode){
 
           var name = elemNode.querySelector('.name').textContent;
-          for(elem of currentPizza.ingredients){
-            if(elem.name == name){
-              elemNode.querySelector('.current_count').textContent = elem.count;
-              continue;
-            }
-          };
+          if( Array.isArray(currentPizza.ingredients) ){
+            for(elem of currentPizza.ingredients){
+              if(elem.name == name){
+                elemNode.querySelector('.current_count').textContent = elem.count;
+                continue;
+              }
+            };
+          }
+         
         
         }
 
@@ -236,23 +239,23 @@ window.onload = function () {
 
       if(currentPizza.size){
         var size = listTemp.cloneNode(true);
-        size.querySelector('.product-name').textContent = currentPizza.size;
+        size.querySelector('.product-name').textContent = currentPizza.size.name;
         size.querySelector('.product-price').remove();
         size.querySelector('.product-count').remove();
         listCont.appendChild(size);
   
       }
-      if(currentPizza.doughType){
-        var doughType = listTemp.cloneNode(true);
-        doughType.querySelector('.product-name').textContent = currentPizza.doughType;
-        doughType.querySelector('.product-price').remove();
-        doughType.querySelector('.product-count').remove();
-        listCont.appendChild(doughType);
+      if(currentPizza.dough){
+        var dough = listTemp.cloneNode(true);
+        dough.querySelector('.product-name').textContent = currentPizza.dough.name;
+        dough.querySelector('.product-price').remove();
+        dough.querySelector('.product-count').remove();
+        listCont.appendChild(dough);
   
       }
       if(currentPizza.base){
         var base = listTemp.cloneNode(true);
-        base.querySelector('.product-name').textContent = currentPizza.base;
+        base.querySelector('.product-name').textContent = currentPizza.base.name;
         base.querySelector('.product-price').remove();
         base.querySelector('.product-count').remove();
         listCont.appendChild(base);
@@ -268,40 +271,29 @@ window.onload = function () {
         listCont.appendChild(current);
       }
     },
-    viewBase(elem){
-      var img = elem.img;
-      var name = elem.name;
+    viewBase(){
+      var currentPizza = JSON.parse(window.localStorage.currentPizza);
+      
       var container = document.querySelector('.pizza-img');
-      var currentImg;
 
-      for(image of container.childNodes){
-        var imgName = image.dataset.name || '';
-        if( name == imgName){
-          currentImg = image;
-          console.log(image);
-          continue;
-        } else if(imgName.indexOf('тесто') >= 0){
-          console.log(1);
-          currentImg = image;
-          continue;
-        } else if(imgName.indexOf('основа') >= 0){
-          console.log(2);
-          currentImg = image;
-          continue;
-        }
+      for(img of container.childNodes){
+        console.log(img);
       }
+      var doughImg = document.createElement('img');
+      doughImg.src = currentPizza.dough.img;
+      doughImg.alt = currentPizza.dough.name;
+      doughImg.style.zIndex = 1;
+      container.appendChild(doughImg);
+      var baseImg = document.createElement('img');
+      baseImg.src = currentPizza.base.img;
+      baseImg.alt = currentPizza.base.name;
+      baseImg.style.zIndex = 2;
+      container.appendChild(baseImg);
 
-      if( !currentImg){
-        currentImg = document.createElement('img');
-        currentImg.dataset.name = name;
-        currentImg.src = img;
-        container.appendChild(currentImg);
-      }else{
-        currentImg.src = img;
-      }
-      
-      
-      
+
+
+      currentPizza = JSON.stringify(currentPizza);
+      window.localStorage.currentPizza = currentPizza;
     },
   };
 
@@ -329,13 +321,13 @@ window.onload = function () {
         for (key in currentPizza) {
           var param = document.getElementsByName(key);
           param.forEach((elem) => {
-            if (elem.value == currentPizza[key]) {
+            if (elem.value == currentPizza[key].name) {
               elem.parentElement.classList.add('checked');
             }
           });
         };
 
-
+        view.viewBase();
         view.viewCheckList(currentPizza);
         view.viewCountIngredient(false, false, currentPizza)
       }
@@ -347,29 +339,39 @@ window.onload = function () {
       var paramName = e.target.name;
       var paramVal = e.target.value;
       var dough = request.dough;
+      
+      
+      var param = currentPizza[paramName] = {};
+      param.type = paramName;
+      param.name = paramVal;
 
 
-      currentPizza[paramName] = paramVal;
+
       if(paramName == 'base'){
         for(base of request[paramName]){
           if(base.name == paramVal){
-            view.viewBase(base);
+            param.img = base.img || '';
           }
         }
       }else{
-        for (item of dough) {
-          if (item.name == currentPizza.doughType && item.size == currentPizza.size) {
-            currentPizza.basePrice = item.price;
-            currentPizza.baseWeight = item.weight;
-            view.viewBase(item);
+        if(currentPizza.hasOwnProperty('dough') && currentPizza.hasOwnProperty('size')){
+          for (item of dough) {
+            if (item.name == currentPizza.dough.name && item.size == currentPizza.size.name) {
+              param.img = item.img || '';
+              currentPizza.basePrice = item.price;
+              currentPizza.baseWeight = item.weight;
+            }
           }
         }
+        
       }
 
+      
       view.viewCheckList(currentPizza);
       currentPizza = JSON.stringify(currentPizza);
       window.localStorage.currentPizza = currentPizza;
-
+      
+      view.viewBase();
 
     },
     addIngredient(e) {
