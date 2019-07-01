@@ -362,6 +362,10 @@ window.onload = function () {
         }
       }
     },
+    viewCartListLength(){
+      var total = document.getElementById('total');
+      total.textContent = controller.getCartListLength();
+    },
   };
 
   var controller = {
@@ -373,6 +377,24 @@ window.onload = function () {
       currentPizza = JSON.stringify(currentPizza);
       window.localStorage.currentPizza = currentPizza;
     },
+    loadCartList(){
+      if(window.localStorage.hasOwnProperty('cartList')){
+        var cartList = JSON.parse(window.localStorage.cartList);
+        return cartList;
+      }
+    },
+    getCartListLength(){
+      var cartList = controller.loadCartList();
+      if(cartList){
+        controller.appendLink();
+        return cartList.length;
+      }else 
+      return 0;
+    },
+    uploadCartList(cartList){
+      cartList = JSON.stringify(cartList);
+      window.localStorage.cartList = cartList;
+    },
     preparationElems(request) {
       model.buildSize(request);
       model.buildDough(request);
@@ -381,7 +403,6 @@ window.onload = function () {
       model.buildDips(request);
       controller.createOrLoadCurrentPizza();
     },
-    // создаём новую пиццу или прорисовываем параметры существующей пиццы
     createOrLoadCurrentPizza() {
 
 
@@ -406,7 +427,6 @@ window.onload = function () {
         view.viewCountIngredient(false, false, currentPizza)
       }
     },
-    // добавляем парраметры пиццы
     selectParams(e, request) {
 
       var currentPizza = controller.loadPizza();
@@ -448,7 +468,7 @@ window.onload = function () {
       view.viewBase();
 
     },
-    removeIngredient(ingredient, imgs, currentPizzaIngredients, ingredientPos, name){
+    removeIngredient(ingredient, imgs, currentPizzaIngredients, ingredientPos, removeElem){
       if( ingredient && imgs && currentPizzaIngredients && ingredientPos){
         if (ingredient.count > 0) {
           ingredient.count -= 1;
@@ -462,13 +482,26 @@ window.onload = function () {
         }
       }else{
         var currentPizza = controller.loadPizza();
+        var name = removeElem.textContent;
+        var ingredientList = document.querySelectorAll('.ingredient_item');
 
         if(currentPizza.hasOwnProperty('ingredients')){
           currentPizza.ingredients.forEach((elem, index)=>{
             if(elem.name == name){
-              console.log(elem);
+              currentPizza.ingredients.splice(index, 1);
+              controller.calcPrice(currentPizza);
+              controller.calcWeight(currentPizza);
+              view.hiddenIngredients(name);
+              view.viewCheckList(currentPizza);
             }
           });
+
+          for(ingredient of ingredientList){
+            if(ingredient.querySelector('.name').textContent == name){
+              ingredient.querySelector('.current_count').textContent = 0
+              break;
+            }
+          }
         }
 
         controller.uploadPizza(currentPizza);
@@ -589,6 +622,28 @@ window.onload = function () {
       }
 
     },
+    addToCart(){
+      var currentPizza = controller.loadPizza();
+      if(currentPizza.hasOwnProperty('base') &&
+         currentPizza.hasOwnProperty('dough') &&
+         currentPizza.hasOwnProperty('size')){
+          var cartList = controller.loadCartList() || [];
+          cartList.push(currentPizza);
+          controller.uploadCartList(cartList);
+          controller.restartPizza();
+          view.viewCartListLength();
+         }else{
+           alert('Не выбрана основа, тесто или размер Вашей пиццы!')
+         }
+    },
+    appendLink(){
+      var link = document.createElement('a');
+      link.href = 'cart.html';
+      link.classList.add('toCart');
+      link.textContent = 'Перейти к корзине';
+      var container = document.querySelector('.paycheck-wrap');
+      container.appendChild(link);
+    }
   };
 
 
@@ -617,10 +672,17 @@ window.onload = function () {
       });
       var paycheck = document.querySelector('.paycheck');
       paycheck.addEventListener('click', (e)=>{
-        if(e.target.classList.contains('product-remove'))
-        var name = e.target.parentElement.getElementsByClassName('product-name')[0].textContent
-        controller.removeIngredient(false, false, false, false, name);
+        if(e.target.classList.contains('product-remove')){
+          var removeElem = e.target.parentElement.getElementsByClassName('product-name')[0]
+          controller.removeIngredient(false, false, false, false, removeElem);
+        }
       })
+      var sendToCart = document.getElementById('send-to-cart');
+      sendToCart.addEventListener('click', ()=>{
+        controller.addToCart();
+      });
+
+      view.viewCartListLength();
 
     },
     function (err) {

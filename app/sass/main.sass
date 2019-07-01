@@ -159,6 +159,7 @@
                 display: block
                 position: relative
                 float: right
+                cursor: pointer
                 &:before
                     +pseudo
                     width: 100%
@@ -178,9 +179,11 @@
                     left: 50%
                     transform: translate(-50%, -50%)
             .product-price
+                width: 30px
                 margin: 0 40px
                 float: right
             .product-count
+                width: 30px
                 float: right
         .total-price, .total-weight
             text-align: left
@@ -194,7 +197,17 @@
         .total-weight
             color: $black
             font-size: 1.25rem
-        button
+        button 
+            display: block
+            margin: 20px auto 0 auto
+        .toCart 
+            display: inline-block
+            // text-align: left
+            margin-top: 10px
+            text-decoration: none
+            margin-top: 25px
+            width: auto
+            border-bottom: 1px solid #000
 
 
     .ingredients
