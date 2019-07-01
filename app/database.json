@@ -198,7 +198,7 @@
             "imgs": ["img/ingredients/pepper1.png", "img/ingredients/pepper2.png", "img/ingredients/pepper3.png"]
         },
         {
-            "name": "Чесное",
+            "name": "Чеснок",
             "category": "Овощи и фрукты",
             "weight": [3, 6, 9],
             "price": 0.15,
@@ -225,7 +225,7 @@
             "imgs": ["img/ingredients/agaricus1.png", "img/ingredients/agaricus2.png", "img/ingredients/agaricus3.png"]
         },
         {
-            "name": "Сыр",
+            "name": "Дополнительный сыр",
             "category": "Сыр",
             "weight": [80],
             "price": 1.20,
