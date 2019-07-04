@@ -70,6 +70,10 @@ window.onload = function () {
       });
       view.displayIngredients(ingredientsReady);
     },
+    buildCartPage(){
+      var cartList = controller.loadCartList();
+      view.viewcartPage(cartList);
+    },
   };
 
 
@@ -77,7 +81,9 @@ window.onload = function () {
     displayDate() {
       var date = new Date;
       var dateContainer = document.querySelector('.date');
-      dateContainer.textContent = date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
+      if(dateContainer){
+        dateContainer.textContent = date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
+      }
     },
     displaySize(sizes) {
       var sizeCont = document.querySelector('#step1 .step_wrap');
@@ -366,6 +372,40 @@ window.onload = function () {
       var total = document.getElementById('total');
       total.textContent = controller.getCartListLength();
     },
+    viewcartPage(cartList){
+
+
+      var cartCont = document.getElementById('cartList');
+      var cartTemp = document.getElementById('cartLi').content.querySelector('li');
+
+
+      cartList.forEach((value, index)=>{
+        var current = cartTemp.cloneNode(true);
+
+        current.querySelector('.pos').getElementsByTagName('span')[0].textContent = index+1;
+        current.querySelector('.price').getElementsByTagName('span')[0].textContent = value.totalPrice || value.basePrice || 0;
+        current.querySelector('.weight').getElementsByTagName('span')[0].textContent = value.totalWeight || value.baseWeight || 0;
+
+        var makeList = '';
+        var ingredients = ''; 
+
+
+        if(value.ingredients){
+          for(ingredient of value.ingredients){
+            ingredients += ", " +  ingredient.name;
+          }
+        }
+        makeList += value.size.name;
+        makeList += ", " + value.dough.name;
+        makeList += ", " +  value.base.name;
+        makeList += ingredients + ".";
+
+
+        current.querySelector('.make-list').textContent = makeList;
+
+        cartCont.appendChild(current);
+      });
+    },
   };
 
   var controller = {
@@ -396,12 +436,23 @@ window.onload = function () {
       window.localStorage.cartList = cartList;
     },
     preparationElems(request) {
-      model.buildSize(request);
-      model.buildDough(request);
-      model.buildBases(request);
-      model.buildIngredients(request);
-      model.buildDips(request);
-      controller.createOrLoadCurrentPizza();
+
+      var pageName = document.getElementById('page-name');
+
+      if(pageName && pageName.textContent.indexOf('Собери самую вкусную пиццу') > -1){
+        model.buildSize(request);
+        model.buildDough(request);
+        model.buildBases(request);
+        model.buildIngredients(request);
+        model.buildDips(request);
+        controller.createOrLoadCurrentPizza();
+      }
+
+
+      if(pageName && pageName.textContent == 'Корзина'){
+        model.buildCartPage(request);
+      }
+
     },
     createOrLoadCurrentPizza() {
 
@@ -637,12 +688,14 @@ window.onload = function () {
          }
     },
     appendLink(){
-      var link = document.createElement('a');
-      link.href = 'cart.html';
-      link.classList.add('toCart');
-      link.textContent = 'Перейти к корзине';
       var container = document.querySelector('.paycheck-wrap');
-      container.appendChild(link);
+      if(container){
+        var link = document.createElement('a');
+        link.href = 'cart.html';
+        link.classList.add('toCart');
+        link.textContent = 'Перейти к корзине';
+        container.appendChild(link);
+      }
     }
   };
 
@@ -658,29 +711,37 @@ window.onload = function () {
       jqueryFunctions();
 
       var params = document.getElementsByClassName('ingredients')[0];
-      params.addEventListener('change', () => {
-        controller.selectParams(event, request);
-      });
-      params.addEventListener('click', (e) => {
-        if (e.target.classList.contains('add') || e.target.classList.contains('remove')) {
-          controller.addIngredient(e);
-        }
-      });
+      if(params){
+        params.addEventListener('change', () => {
+          controller.selectParams(event, request);
+        });
+        params.addEventListener('click', (e) => {
+          if (e.target.classList.contains('add') || e.target.classList.contains('remove')) {
+            controller.addIngredient(e);
+          }
+        });
+      }
       var rest = document.getElementById('restart');
-      rest.addEventListener('click', ()=>{
-        controller.restartPizza();
-      });
+      if(rest){
+        rest.addEventListener('click', ()=>{
+          controller.restartPizza();
+        });
+      }
       var paycheck = document.querySelector('.paycheck');
-      paycheck.addEventListener('click', (e)=>{
-        if(e.target.classList.contains('product-remove')){
-          var removeElem = e.target.parentElement.getElementsByClassName('product-name')[0]
-          controller.removeIngredient(false, false, false, false, removeElem);
-        }
-      })
+      if(paycheck){
+        paycheck.addEventListener('click', (e)=>{
+          if(e.target.classList.contains('product-remove')){
+            var removeElem = e.target.parentElement.getElementsByClassName('product-name')[0]
+            controller.removeIngredient(false, false, false, false, removeElem);
+          }
+        })
+      }
       var sendToCart = document.getElementById('send-to-cart');
+     if(sendToCart){
       sendToCart.addEventListener('click', ()=>{
         controller.addToCart();
       });
+     }
 
       view.viewCartListLength();
 

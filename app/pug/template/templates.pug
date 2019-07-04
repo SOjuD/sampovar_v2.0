@@ -28,3 +28,34 @@ template#paycheckLi
             span
             | р.
         span.product-count
+template#cartLi 
+    li 
+        .name
+            .pos
+                span
+                | . Ваша пицца
+            .make
+                .title-list Состав:
+                .make-list
+        .weight
+            span 0
+            |  гр. 
+        .count 
+            .control
+                .remove -
+                .current_count 1
+                .add +
+        .price
+            span 0 
+            | р.
+        .delete
+            .product-remove
+template#cartLiTotal
+    li 
+        div Всего в корзине
+            span#cartTotalCount 1 
+            | шт.
+        div Итого:
+            span#cartTotalPrice 10
+            |  р.
+            

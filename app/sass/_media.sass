@@ -117,12 +117,35 @@
             padding: 10px
             .step
                 margin: 30px 0
+                transition: .3s
+                border-bottom: 1px solid #D0D0D0
+                &:last-child
+                    border: none
                 label
+                    line-height: 2
                     padding-left: 50px
+                    width: 100%
+                    display: block
                     &:before
                         left: 20px
                     &:after
                         left: 22px
+                .step_title
+                    position: relative
+                    &:before 
+                        +pseudo 
+                        width: 20px
+                        height: 20px
+                        background: url(../img/plus.svg) no-repeat center
+                        background-size: 100% 100%
+                        top: 5%
+                        right: 10px
+                        display: block
+                        transition: .3s
+            .active_step 
+                border-color: transparent
+                .step_title:before 
+                    opacity: 0
             .ingredients-wrap
                 justify-content: space-around
                 .ingredient_item 

@@ -123,6 +123,7 @@
             margin: 40px 0
             text-align: left
             position: relative
+            min-height: 50px
             &:before
                 +pseudo
                 bottom: 110%
@@ -179,12 +180,14 @@
                     left: 50%
                     transform: translate(-50%, -50%)
             .product-price
-                width: 30px
+                min-width: 40px
                 margin: 0 40px
                 float: right
+                text-align: center
             .product-count
-                width: 30px
+                min-width: 20px
                 float: right
+                text-align: center
         .total-price, .total-weight
             text-align: left
             color: $accent
@@ -307,6 +310,97 @@
         #step4 .ingredients-wrap
             display: none
 
+
+.header-cart
+    background: url(../img/header_cart_bg.jpg) no-repeat center 
+    background-size: cover
+    padding: 50px 0
+    &:before
+        display: none
+    .header-content
+        min-height: 330px
+    .sec_title
+        font-size: 2.8rem
+        font-weight: 600
+        padding-left: 7%
+.main-cart 
+    padding: 50px 0
+#cartList
+    color: $black
+    li
+        +flex(flex-start, flex-start)
+        padding: 15px 20px
+        .name 
+            width: 100%
+            max-width: 600px
+        .weight 
+            width: 90px
+            text-align: center
+            margin: 0 10px
+        .count 
+            width: 150px
+            text-align: center
+            margin: 0 10px
+            .control
+                margin: 0 auto
+                width: 94px
+                height: 34px
+                +flex(center, center)
+                border: 2px solid #000
+                border-radius: 10em
+                overflow: hidden
+                *
+                    line-height: 30px
+                    font-size: 1.2rem
+                    height: 100%
+                    width: 30px
+                    +flex(center, center)
+                .remove, .add
+                    font-size: 2rem
+                    cursor: pointer
+                    transition: .4s
+                    &:hover
+                        background-color: $text
+                        color: $invert
+        .price 
+            width: 100px
+            text-align: center
+            margin: 0 10px
+        .delete 
+            width: 80px
+            text-align: center
+            margin: 0 10px
+            .product-remove
+                width: 20px
+                height: 20px
+                display: block
+                position: relative
+                margin: 0 auto
+                cursor: pointer
+                &:before
+                    +pseudo
+                    width: 100%
+                    height: 100%
+                    top: 50%
+                    left: 50%
+                    transform: translate(-50%, -50%)
+                    border-radius: 100%
+                    border: 1px solid #000
+                &:after
+                    position: absolute
+                    content: '\2716'
+                    font-size: 1rem
+                    text-align: center
+                    line-height: 21px
+                    top: 50%
+                    left: 50%
+                    transform: translate(-50%, -50%)
+        &:first-child
+            background: $accent
+            color: $invert
+            * 
+                font-size: 1.1rem
+                font-weight: 600
 
 
 

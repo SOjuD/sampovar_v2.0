@@ -1,5 +1,10 @@
 extends template/header
 block append body 
+	header
+		.header-banner
+			.header-content.container
+				h1#page-name  Собери самую вкусную пиццу,<br> а мы её привезём!
+				img.slice(src="img/slice.svg", alt="pizza-arrow")
 	main
 		section.constructor
 			h2.sec_title Конструктор пиццы
@@ -16,7 +21,7 @@ block append body
 						.step_wrap
 					#step4.step
 						.step_title 04. Основные ингредиениты:
-						.ingredients_item
+						.ingredients_item.step_wrap
 							p *Рекомендуемое количество ингредиентов — не более 10. 
 							.labels
 								.ingredients_label.meat_label.active_label(data-group="meat")
@@ -28,7 +33,7 @@ block append body
 								.ingredients_label.cheese_label(data-group="cheese")
 									img(src="img/labels/cheese.svg", alt="Сыр" data-src="img/labels/cheese.svg" data-active-src="img/labels/active_cheese.svg")
 									.name Сыр
-							.groups.step_wrap
+							.groups
 								#meat.ingredients-wrap
 								#vegetable.ingredients-wrap
 								#cheese.ingredients-wrap
@@ -48,7 +53,7 @@ block append body
 						.title Компания "Сам повар"
 							span.date
 						.check-list
-							.check-list-header Состав вашей пиццы
+							.check-list-header Состав вашей пиццы:
 							ul#paycheckContainer
 						.total-price Цена: 
 							span.price-container 0

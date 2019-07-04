@@ -1,0 +1,18 @@
+extends template/header
+block append body
+    .header-banner.header-cart
+        .header-content.container 
+            #page-name.sec_title Корзина
+    main.main-cart
+        .container
+            ul#cartList
+                li.header
+                    .name Название
+                    .weight Вес
+                    .count Количество
+                    .price Стоимость
+                    .delete Удалить
+                li
+
+    include template/templates
+    include template/footer

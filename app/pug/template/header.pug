@@ -25,12 +25,12 @@ html(lang='ru')
         block body
             .top-line
                 .container
-                    a.top-logo
-                        img(src='img/logo.png', alt='sportpizza.by')
+                    a.top-logo(href="https://sportpizza.by")
+                        img(src='img/logo.svg', alt='sportpizza.by')
                     .clock
                         img(src="img/clock.svg", alt="clock")
                         | с 10:00 до 23:00
-                    .logo2
+                    a.logo2(href="https://sam-povar.by")
                         img(src='img/logo2.svg', alt='sam-povar.by')
                     a.top-contact(href='tel:7235')
                         img(src="img/phone.svg", alt="png")
@@ -41,8 +41,3 @@ html(lang='ru')
                     a.cart(href="cart.html")
                         img(src="img/cart.svg", alt="cart")
                         #total 0
-            header
-                .header-banner
-                    .header-content.container
-                        h1  Собери самую вкусную пиццу,<br> а мы её привезём!
-                        img.slice(src="img/slice.svg", alt="pizza-arrow")

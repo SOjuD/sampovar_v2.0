@@ -21,77 +21,24 @@
           <div id="total">0</div></a>
       </div>
     </div>
-    <header>
-      <div class="header-banner">
-        <div class="header-content container">
-          <h1 id="page-name"> Собери самую вкусную пиццу,<br> а мы её привезём!</h1><img class="slice" src="img/slice.svg" alt="pizza-arrow">
-        </div>
+    <div class="header-banner header-cart">
+      <div class="header-content container"> 
+        <div class="sec_title" id="page-name">Корзина</div>
       </div>
-    </header>
-    <main>
-      <section class="constructor">
-        <h2 class="sec_title">Конструктор пиццы</h2>
-        <div class="container">
-          <form class="ingredients">
-            <div class="step" id="step1"> 
-              <div class="step_title">01. Размер:</div>
-              <div class="step_wrap"></div>
-            </div>
-            <div class="step" id="step2"> 
-              <div class="step_title">02. Тесто:</div>
-              <div class="step_wrap"></div>
-            </div>
-            <div class="step" id="step3"> 
-              <div class="step_title">03. Основа пиццы:</div>
-              <div class="step_wrap"></div>
-            </div>
-            <div class="step" id="step4">
-              <div class="step_title">04. Основные ингредиениты:</div>
-              <div class="ingredients_item step_wrap">
-                <p>*Рекомендуемое количество ингредиентов — не более 10. </p>
-                <div class="labels">
-                  <div class="ingredients_label meat_label active_label" data-group="meat"><img src="img/labels/meat.svg" alt="Мясные ингредиенты" data-src="img/labels/meat.svg" data-active-src="img/labels/active_meat.svg">
-                    <div class="name">Мясные ингредиенты</div>
-                  </div>
-                  <div class="ingredients_label vegetable_label" data-group="vegetable"><img src="img/labels/vegetable.svg" alt="Овощи и фрукты" data-src="img/labels/vegetable.svg" data-active-src="img/labels/active_vegetable.svg">
-                    <div class="name">Овощи и фрукты</div>
-                  </div>
-                  <div class="ingredients_label cheese_label" data-group="cheese"><img src="img/labels/cheese.svg" alt="Сыр" data-src="img/labels/cheese.svg" data-active-src="img/labels/active_cheese.svg">
-                    <div class="name">Сыр</div>
-                  </div>
-                </div>
-                <div class="groups">
-                  <div class="ingredients-wrap" id="meat"></div>
-                  <div class="ingredients-wrap" id="vegetable"></div>
-                  <div class="ingredients-wrap" id="cheese"></div>
-                </div>
-              </div>
-            </div>
-            <div class="step" id="step5"> 
-              <div class="step_title">05. Соусы:</div>
-              <div class="step_wrap">
-                <div class="ingredients-wrap" id="dip"></div>
-              </div>
-            </div>
-          </form>
-          <div class="pizza-view">
-            <div class="pizza-img"><img class="board" src="img/board.png" alt="pizza-border"></div>
-            <button id="restart">Собрать заново<img src="img/reload.svg" alt="restart"></button>
-          </div>
-          <div class="paycheck">
-            <div class="paycheck-wrap"><img src="img/logo2.svg" alt="sam-povar.by">
-              <div class="title">Компания "Сам повар"<span class="date"></span></div>
-              <div class="check-list">
-                <div class="check-list-header">Состав вашей пиццы:</div>
-                <ul id="paycheckContainer"></ul>
-              </div>
-              <div class="total-price">Цена: <span class="price-container">0</span> р.</div>
-              <div class="total-weight">Общий вес: <span class="weight-container">0</span> гр.</div>
-              <button class="main-button" id="send-to-cart">Добавить в корзину</button>
-            </div>
-          </div>
-        </div>
-      </section>
+    </div>
+    <main class="main-cart">
+      <div class="container">
+        <ul id="cartList">
+          <li class="header">
+            <div class="name">Название</div>
+            <div class="weight">Вес</div>
+            <div class="count">Количество</div>
+            <div class="price">Стоимость</div>
+            <div class="delete">Удалить</div>
+          </li>
+          <li></li>
+        </ul>
+      </div>
     </main>
     <template id="select_size">
       <label>
