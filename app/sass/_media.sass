@@ -85,6 +85,20 @@
         .clock
             display: none
 
+
+    .header-cart 
+        .header-content
+            min-height: 150px
+        .sec_title 
+            padding-left: 0
+    #cartList 
+        li.header 
+            display: none
+        li 
+            .name 
+                max-width: 100%
+                margin-bottom: 20px
+
 // ≥768px
 @media only screen and (max-width : 768px)
     footer 
@@ -97,6 +111,22 @@
             width: 100%
             max-width: 100%
         
+    .header-cart 
+        .header-content
+            min-height: 100px
+    .main-cart 
+        padding: 10px 0
+    #cartList 
+        padding-left: 0
+        li.totalCart
+            background-color: #FFE0AD
+            text-align: center
+            >div 
+                width: 100%
+            .checkout 
+                display: block
+                margin: 0 auto
+                margin-top: 20px
 
 
 // ≥576px
@@ -169,6 +199,31 @@
         .logo 
             display: none
 
+
+
+    .header-cart
+        .header-content 
+            min-height: 150px
+    #cartList 
+        li 
+            justify-content: space-between
+            border-bottom: none
+            border-top: 1px solid $accent
+            padding: 25px 10px
+            &:nth-child(2)
+                border: none
+            .make 
+                .title-list
+                    width: 100%
+                .make-list 
+                    width: 100%
+            .weight, .count, .price, .delete 
+                width: auto
+        li.totalCart 
+            >div 
+                margin: 10px auto
+            *
+                font-weight: 400
 
     
 

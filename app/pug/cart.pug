@@ -12,7 +12,14 @@ block append body
                     .count Количество
                     .price Стоимость
                     .delete Удалить
-                li
+                li.totalCart
+                    div Всего в корзине: 
+                        span#cartTotalCount 1 
+                        |  шт.
+                    div Итого: 
+                        span#cartTotalPrice 10
+                        |  р.
+                        button.checkout.main-button Оформить заказ
 
     include template/templates
     include template/footer

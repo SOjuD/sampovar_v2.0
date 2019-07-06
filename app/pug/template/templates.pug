@@ -29,7 +29,7 @@ template#paycheckLi
             | р.
         span.product-count
 template#cartLi 
-    li 
+    li.pizza
         .name
             .pos
                 span
@@ -49,13 +49,5 @@ template#cartLi
             span 0 
             | р.
         .delete
-            .product-remove
-template#cartLiTotal
-    li 
-        div Всего в корзине
-            span#cartTotalCount 1 
-            | шт.
-        div Итого:
-            span#cartTotalPrice 10
-            |  р.
+            .removeFromCart
             

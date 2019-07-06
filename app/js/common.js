@@ -372,22 +372,46 @@ window.onload = function () {
       var total = document.getElementById('total');
       total.textContent = controller.getCartListLength();
     },
+    viewCartTotal(cartList){
+      var cartTotalPrice = document.getElementById('cartTotalPrice');
+      var cartTotalCount = document.getElementById('cartTotalCount');
+
+      
+      if(cartTotalPrice){
+        cartTotalPrice.textContent = controller.calcCartPrice();
+      }
+      if(cartTotalCount){
+        cartTotalCount.textContent = controller.calcCartListLength(cartList);
+      }
+    },
     viewcartPage(cartList){
 
 
       var cartCont = document.getElementById('cartList');
       var cartTemp = document.getElementById('cartLi').content.querySelector('li');
+      var totalCart = document.querySelector('.totalCart');
+      var pizzaOfList = cartCont.querySelectorAll('.pizza');
+
+      view.viewCartTotal(cartList);
+
+      if(pizzaOfList){
+        for(pizza of pizzaOfList){
+          pizza.remove();
+        }
+      }
 
 
       cartList.forEach((value, index)=>{
         var current = cartTemp.cloneNode(true);
 
         current.querySelector('.pos').getElementsByTagName('span')[0].textContent = index+1;
-        current.querySelector('.price').getElementsByTagName('span')[0].textContent = value.totalPrice || value.basePrice || 0;
+        current.querySelector('.price').getElementsByTagName('span')[0].textContent = value.priceWithCount || value.totalPrice || value.basePrice || 0;
         current.querySelector('.weight').getElementsByTagName('span')[0].textContent = value.totalWeight || value.baseWeight || 0;
+        current.querySelector('.current_count').textContent = value.count || 1;
+
 
         var makeList = '';
-        var ingredients = ''; 
+        var ingredients = '';   
 
 
         if(value.ingredients){
@@ -403,9 +427,13 @@ window.onload = function () {
 
         current.querySelector('.make-list').textContent = makeList;
 
-        cartCont.appendChild(current);
+        cartCont.insertBefore(current, totalCart);
       });
     },
+    viewCountPizza(li, count){
+      var container = li.querySelector('.current_count')
+      container.textContent = count || 1;
+    }
   };
 
   var controller = {
@@ -512,7 +540,9 @@ window.onload = function () {
         
       }
 
-      
+      if(currentPizza.hasOwnProperty('ingredients')){
+        currentPizza = controller.calcPrice(currentPizza);
+      }
       view.viewCheckList(currentPizza);
       controller.uploadPizza(currentPizza);
       
@@ -683,20 +713,84 @@ window.onload = function () {
           controller.uploadCartList(cartList);
           controller.restartPizza();
           view.viewCartListLength();
-         }else{
-           alert('Не выбрана основа, тесто или размер Вашей пиццы!')
-         }
+          controller.calcCartPrice();
+        }else{
+          alert('Не выбрана основа, тесто или размер Вашей пиццы!')
+        }
+    },
+    calcCartPrice(){
+      var cartList = controller.loadCartList();
+
+      price = 0;
+      for(pizza of cartList){
+        price += pizza.priceWithCount || pizza.totalPrice || 0;
+      }
+      price = +price.toFixed(2);
+      return price
     },
     appendLink(){
       var container = document.querySelector('.paycheck-wrap');
-      if(container){
+      if(container && !container.querySelector('.toCart')){
         var link = document.createElement('a');
         link.href = 'cart.html';
         link.classList.add('toCart');
         link.textContent = 'Перейти к корзине';
         container.appendChild(link);
       }
-    }
+    },
+    removeFromCart(li){
+      var cartList = controller.loadCartList();
+      var pos = +(li.querySelector('.pos').getElementsByTagName('span')[0].textContent) - 1;
+      cartList.splice(pos, 1);
+      controller.uploadCartList(cartList);
+      controller.calcCartListLength(cartList);
+      view.viewcartPage(cartList);
+      view.viewCartListLength();
+    },
+    addCountPizza(li){
+      var cartList = controller.loadCartList();
+      var pos = +(li.querySelector('.pos').getElementsByTagName('span')[0].textContent) - 1;
+      var count = cartList[pos].count || 1;
+
+      count +=1;
+      cartList[pos].count = count;
+      controller.uploadCartList(cartList);
+      controller.calcCartListLength(cartList);
+      controller.calcFullPricePizzaOnCart(cartList);
+      view.viewcartPage(cartList);
+      view.viewCountPizza(li, cartList[pos].count);
+      view.viewCartTotal(cartList);
+    },
+    removeCountPizza(li){
+      var cartList = controller.loadCartList();
+      var pos = +(li.querySelector('.pos').getElementsByTagName('span')[0].textContent) - 1;
+      var count = cartList[pos].count || 1;
+
+      if(count && count > 1){
+        count -=1;
+        cartList[pos].count = count;
+      }
+      controller.uploadCartList(cartList);
+      controller.calcCartListLength(cartList);
+      controller.calcFullPricePizzaOnCart(cartList);
+      view.viewcartPage(cartList);
+      view.viewCountPizza(li, cartList[pos].count);
+      view.viewCartTotal(cartList);
+    },
+    calcCartListLength(cartList){
+      var length = 0;
+      for(pizza of cartList){
+        var count = pizza.count || 1;
+        length += count;
+      }
+      return length;
+    },
+    calcFullPricePizzaOnCart(cartList){
+      for(pizza of cartList){
+        pizza.priceWithCount = +(pizza.totalPrice * pizza.count || 1).toFixed(2);
+      }
+      controller.uploadCartList(cartList);
+    },
   };
 
 
@@ -742,6 +836,22 @@ window.onload = function () {
         controller.addToCart();
       });
      }
+
+     var cartList = document.getElementById('cartList');
+     if(cartList){
+       cartList.addEventListener('click', (e)=>{
+         if(e.target.classList.contains('removeFromCart')){
+           controller.removeFromCart(e.target.closest('li'));
+         }
+         if(e.target.classList.contains('add')){
+           controller.addCountPizza(e.target.closest('li'));
+         }
+         if(e.target.classList.contains('remove')){
+           controller.removeCountPizza(e.target.closest('li'));
+         }
+       })
+     }
+
 
       view.viewCartListLength();
 
