@@ -4,22 +4,45 @@ block append body
         .header-content.container 
             #page-name.sec_title Корзина
     main.main-cart
-        .container
-            ul#cartList
-                li.header
-                    .name Название
-                    .weight Вес
-                    .count Количество
-                    .price Стоимость
-                    .delete Удалить
-                li.totalCart
-                    div Всего в корзине: 
-                        span#cartTotalCount 1 
-                        |  шт.
-                    div Итого: 
-                        span#cartTotalPrice 10
-                        |  р.
-                        button.checkout.main-button Оформить заказ
+        section.cart
+            .container
+                ul#cartList
+                    li.header
+                        .name Название
+                        .weight Вес
+                        .count Количество
+                        .price Стоимость
+                        .delete Удалить
+                    li.totalCart
+                        div Всего в корзине: 
+                            span#cartTotalCount 1 
+                            |  шт.
+                        div Итого: 
+                            span#cartTotalPrice 10
+                            |  р.
+                            button#toCheckout.checkout.main-button Оформить заказ
+        section.checkout 
+            form#clientInfo.container 
+                ul
+                    li
+                        .title 01. Получатель
+                        input.clientInfo(type="text" name="name" placeholder="Имя:")
+                        input.clientInfo(type="text" name="phone" placeholder="Телефон:" )
+                    li
+                        .title 02. Куда будем доставлять?
+                        input.clientInfo(type="text" name="adress" placeholder="Адрес доставки:")
+                    li
+                        .title 03. Выберите способ оплаты
+                        label
+                            input.clientInfo(type="radio" name="paymethod" value="Наличными")
+                            span Наличными
+                        label
+                            input.clientInfo(type="radio" name="paymethod" value="Банковской картой")
+                            span Банковской картой
+                        label
+                            input.clientInfo(type="radio" name="paymethod" value="Оплата онлайн")
+                            span Оплата онлайн
+                button#sendOrderButton.main-button Подтвердить заказ
 
     include template/templates
     include template/footer

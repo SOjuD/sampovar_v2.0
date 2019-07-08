@@ -23,58 +23,10 @@
     </div>
     <div class="header-banner header-cart">
       <div class="header-content container"> 
-        <div class="sec_title" id="page-name">Корзина</div>
+        <div class="sec_title" id="page-name">Оформление заказа</div>
       </div>
     </div>
-    <main class="main-cart">
-      <section class="cart">
-        <div class="container">
-          <ul id="cartList">
-            <li class="header">
-              <div class="name">Название</div>
-              <div class="weight">Вес</div>
-              <div class="count">Количество</div>
-              <div class="price">Стоимость</div>
-              <div class="delete">Удалить</div>
-            </li>
-            <li class="totalCart">
-              <div>Всего в корзине: <span id="cartTotalCount">1 </span> шт.</div>
-              <div>Итого: <span id="cartTotalPrice">10</span> р.
-                <button class="checkout main-button" id="toCheckout">Оформить заказ</button>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </section>
-      <section class="checkout"> 
-        <form class="container" id="clientInfo"> 
-          <ul>
-            <li>
-              <div class="title">01. Получатель</div>
-              <input class="clientInfo" type="text" name="name" placeholder="Имя:">
-              <input class="clientInfo" type="text" name="phone" placeholder="Телефон:">
-            </li>
-            <li>
-              <div class="title">02. Куда будем доставлять?</div>
-              <input class="clientInfo" type="text" name="adress" placeholder="Адрес доставки:">
-            </li>
-            <li>
-              <div class="title">03. Выберите способ оплаты</div>
-              <label>
-                <input class="clientInfo" type="radio" name="paymethod" value="Наличными"><span>Наличными</span>
-              </label>
-              <label>
-                <input class="clientInfo" type="radio" name="paymethod" value="Банковской картой"><span>Банковской картой</span>
-              </label>
-              <label>
-                <input class="clientInfo" type="radio" name="paymethod" value="Оплата онлайн"><span>Оплата онлайн</span>
-              </label>
-            </li>
-          </ul>
-          <button class="main-button" id="sendOrderButton">Подтвердить заказ</button>
-        </form>
-      </section>
-    </main>
+    <main class="main-checkout"></main>
     <template id="select_size">
       <label>
         <input type="radio" name="size"><span></span>

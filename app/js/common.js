@@ -74,6 +74,48 @@ window.onload = function () {
       var cartList = controller.loadCartList();
       view.viewcartPage(cartList);
     },
+    sendOrder(){
+      var data = controller.prepareOrderToSend();
+      var url = 'mailer.php';
+      function sendData(url){
+        return new Promise( (resolve, reject)=>{
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", url);
+          xhr.addEventListener('load', ()=>{
+            if(xhr.statusText == 200){
+              resolve(xhr.response);
+            }else{
+              reject(xhr.statusText);
+            }
+          });
+          xhr.addEventListener('error', ()=>{reject(xhr.statusText)});
+
+          data = JSON.stringify(data);
+
+          xhr.send(data);
+
+        });
+
+      }
+      sendData(url).then(
+        (request)=>{
+          console.log(request);
+          
+          $('.popup').fadeIn(400);
+          $('.successMessage').fadeIn(400);
+          $('.popup').delay(2000).fadeOut(400);
+          window.localStorage.removeItem('cartList');
+
+        },
+        (err)=>{
+          $('.popup').fadeIn(400);
+          $('.errorMessage').fadeIn(400);
+          $('.popup').delay(5000).fadeOut(400);
+          console.log(err);
+        }
+      )
+    }
   };
 
 
@@ -433,7 +475,7 @@ window.onload = function () {
     viewCountPizza(li, count){
       var container = li.querySelector('.current_count')
       container.textContent = count || 1;
-    }
+    },
   };
 
   var controller = {
@@ -756,7 +798,7 @@ window.onload = function () {
       cartList[pos].count = count;
       controller.uploadCartList(cartList);
       controller.calcCartListLength(cartList);
-      controller.calcFullPricePizzaOnCart(cartList);
+      controller.calcPriceWithCount(cartList);
       view.viewcartPage(cartList);
       view.viewCountPizza(li, cartList[pos].count);
       view.viewCartTotal(cartList);
@@ -772,7 +814,7 @@ window.onload = function () {
       }
       controller.uploadCartList(cartList);
       controller.calcCartListLength(cartList);
-      controller.calcFullPricePizzaOnCart(cartList);
+      controller.calcPriceWithCount(cartList);
       view.viewcartPage(cartList);
       view.viewCountPizza(li, cartList[pos].count);
       view.viewCartTotal(cartList);
@@ -785,11 +827,49 @@ window.onload = function () {
       }
       return length;
     },
-    calcFullPricePizzaOnCart(cartList){
+    calcPriceWithCount(cartList){
       for(pizza of cartList){
-        pizza.priceWithCount = +(pizza.totalPrice * pizza.count || 1).toFixed(2);
+        pizza.priceWithCount = +((pizza.totalPrice || pizza.basePrice) * (pizza.count || 1)).toFixed(2);
       }
       controller.uploadCartList(cartList);
+    },
+    prepareOrderToSend(){
+      var cartList = controller.loadCartList();
+      var send = [];
+      for(pizza of cartList){
+        var current = {};
+
+        current.count = pizza.count || 1;
+        current.size = pizza.size.name;
+        current.dough = pizza.dough.name;
+        current.base = pizza.base.name;
+        if(Array.isArray(pizza.ingredients)){
+          current.ingredients = [];
+          for(el of pizza.ingredients){
+            var val = el.name + " : " + el.count + " порций";
+            current.ingredients.push(val);
+          }
+        }
+        current.weight = pizza.totalWeight || pizza.baseWeight + " гр.";
+        current.price = pizza.totalPrice || pizza.basePrice + " руб.";
+
+        send.push(current);
+      }
+      var totalPrice = 'Итого:' + controller.calcCartPrice() + ' руб.';
+      send.push(totalPrice);
+      var clientInfo = {};
+      var clientInfoItems = document.querySelectorAll('.clientInfo');
+      for(input of clientInfoItems){
+        var name = input.getAttribute('name');
+        var val = input.value;
+        if(val){
+          clientInfo[name] = val;
+        }
+      }
+      
+
+      return [send, clientInfo];
+
     },
   };
 
@@ -852,6 +932,26 @@ window.onload = function () {
        })
      }
 
+    // показываем финальную форму если корзина не пуста
+     var toCheckout = document.getElementById('toCheckout');
+     if(toCheckout){
+      toCheckout.addEventListener('click', ()=>{
+        if(!!controller.calcCartListLength(controller.loadCartList())){
+          var checkout = $('.checkout');
+          checkout.show(300);
+          $('body,html').animate({scrollTop: checkout.offset().top}, 1000);
+        }
+      });
+     }
+
+     var clientInfo = document.getElementById('clientInfo');
+     if(clientInfo){
+      clientInfo.addEventListener('submit', (e)=>{
+        e.preventDefault(); 
+        model.sendOrder();
+       });
+     }
+
 
       view.viewCartListLength();
 
@@ -896,10 +996,10 @@ window.onload = function () {
       $('.step').click(function () {
         if (!$(this).hasClass('active_step')) {
           var active = $(this).parents('.ingredients').find('.active_step');
-          active.find('.step_wrap').slideUp(300);
+          active.find('.step_wrap').hide(300);
           active.removeClass('active_step');
           $(this).addClass('active_step');
-          $(this).find('.step_wrap').slideDown(300);
+          $(this).find('.step_wrap').show(300);
         }
       });
     }
