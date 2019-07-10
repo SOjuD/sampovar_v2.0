@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <meta name="description" content="#{description}">
+    <meta name="keywords" content="#{keywords}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale= 1">
+    <meta property="og:image" content="img/soc.png">
+    <link rel="icon" href="img/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="100x100" href="img/favicon/favicon.png">
+    <meta name="theme-color" content="#000">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <div class="top-line">
+      <div class="container"><a class="top-logo" href="https://sportpizza.by"><img src="img/logo.svg" alt="sportpizza.by"></a>
+        <div class="clock"><img src="img/clock.svg" alt="clock">с 10:00 до 23:00</div><a class="logo2" href="https://sam-povar.by"><img src="img/logo2.svg" alt="sam-povar.by"></a><a class="top-contact" href="tel:7235"><img src="img/phone.svg" alt="png">
+          <div class="phone">7235</div><img src="img/mts.png" alt="mts"><img src="img/velcom.png" alt="velcom"><img src="img/life.png" alt="life"></a><a class="cart" href="cart.html"><img src="img/cart.svg" alt="cart">
+          <div id="total">0</div></a>
+      </div>
+    </div>
+    <div class="header-banner header-cart">
+      <div class="header-content container"> 
+        <div class="sec_title" id="page-name">Оформление заказа</div>
+      </div>
+    </div>
+    <main class="main-checkout"></main>
+    <template id="select_size">
+      <label>
+        <input type="radio" name="size"><span></span>
+      </label>
+    </template>
+    <template id="select_dough">
+      <label>
+        <input type="radio" name="dough"><span></span>
+      </label>
+    </template>
+    <template id="select_base">
+      <label>
+        <input type="radio" name="base"><span></span>
+      </label>
+    </template>
+    <template id="select_ingredients">
+      <div class="ingredient_item"><img src="" alt="">
+        <div class="price"></div>
+        <div class="name"></div>
+        <div class="control">
+          <div class="remove">-</div>
+          <div class="current_count">0</div>
+          <div class="add">+</div>
+        </div>
+      </div>
+    </template>
+    <template id="paycheckLi">
+      <li> <span class="product-name"></span><span class="product-remove"></span><span class="product-price"><span></span>р.</span><span class="product-count"></span></li>
+    </template>
+    <template id="cartLi"> 
+      <li class="pizza">
+        <div class="name">
+          <div class="pos"><span></span>. Ваша пицца</div>
+          <div class="make">
+            <div class="title-list">Состав:</div>
+            <div class="make-list"></div>
+          </div>
+        </div>
+        <div class="weight"><span>0</span> гр. </div>
+        <div class="count"> 
+          <div class="control">
+            <div class="remove">-</div>
+            <div class="current_count">1</div>
+            <div class="add">+</div>
+          </div>
+        </div>
+        <div class="price"><span>0 </span>р.</div>
+        <div class="delete">
+          <div class="removeFromCart"></div>
+        </div>
+      </li>
+    </template>
+    <footer id="contacts">
+      <div class="container">
+        <div class="col">
+          <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d723.2516290269781!2d31.011338531403606!3d52.429892504269596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46d46854ebbca467%3A0x6a3a566ae1560887!2z0YPQuy4g0JjRgNC40L3QuNC90YHQutCw0Y8gNiwg0JPQvtC80LXQu9GM!5e0!3m2!1sru!2sby!4v1559506829877!5m2!1sru!2sby" llowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="col">
+          <div class="contacts"> 
+            <p>контакты</p>
+            <div class="adress">г. Гомель, ул. Ирининская д.6</div><a class="phone" href="tel:7235">7235 (Звонок бесплатный)</a><a class="phone" href="tel:+375(29)166-66-66">+375(29)166-66-66 (доставка)</a><a class="phone" href="tel:+375(29)677-77-77">+375(29)677-77-77 (доставка)</a><a class="phone" href="tel:+375(29)733-33-33">+375(29)733-33-33 (доставка)</a><a class="phone" href="tel:+375(29)383-05-52">+375(29)383-05-52 (самовывоз)</a>
+            <div class="time">Заказы принимаются с 10:00 до 23:00</div>
+            <p>© Все права защищены ОДО "Дзю-до", 2019<br> Юр. адрес: 246004, Беларусь, Гомель ул. Рабочая, 26</p>
+            <p>УНП 490319040</p>
+          </div>
+        </div>
+        <div class="col"> 
+          <div class="logo"> <img src="img/logo2.svg" alt="sam-povar.by"></div>
+          <div class="social-links"><span>Мы в социальных сетях</span><a class="link" href="https://www.facebook.com/rashad.mamedov.7731"> <img src="img/facebook.svg" alt="facebook"></a><a class="link" href="https://www.instagram.com/rashad.mamedov.7731/"><img src="img/instagram.svg" alt="instagram"></a><a class="link" href="https://vk.com/sportpizza"><img src="img/vk.svg" alt="vk"></a></div>
+        </div>
+      </div>
+      <div class="bottom-line">
+        <div class="container">
+          <div class="by">Сайт разработан:<a href="mailto:talrash666@gmail.com"> talrash666<span>@gmail.com</span></a></div>
+        </div>
+      </div>
+    </footer>
+    <div class="popup">
+      <div class="popupMessage successMessage">Ваша заявка зафиксирована! <br>Мы скоро с вями свяжемся</div>
+      <div class="popupMessage errorMessage">Что-то пошло не так! <br>Позвоните нам по телефону 7235</div>
+    </div>
+    <div class="preloader">
+      <div class="loader-one">
+        <div class="loader-one__center"></div>
+        <div class="loader-one__item"></div>
+        <div class="loader-one__item"></div>
+        <div class="loader-one__item"></div>
+        <div class="loader-one__item"></div>
+        <div class="loader-one__item"></div>
+        <div class="loader-one__item"></div>
+      </div>
+      <svg class="loader-one__svg" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs></defs>
+        <filter id="gozzo">
+          <fegaussianblur in="SourceGraphic" stdDeviation="10" result="blur"></fegaussianblur>
+          <fecolormatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></fecolormatrix>
+          <feblend in="SourceGraphic" in2="goo"></feblend>
+        </filter>
+      </svg>
+    </div>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+    <script src="js/libs.min.js"></script>
+    <script src="js/common.js"></script>
+  </body>
+</html>
