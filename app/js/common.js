@@ -82,8 +82,9 @@ window.onload = function () {
 
           var xhr = new XMLHttpRequest();
           xhr.open("POST", url);
+          xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
           xhr.addEventListener('load', ()=>{
-            if(xhr.statusText == 200){
+            if(xhr.status == 200){
               resolve(xhr.response);
             }else{
               reject(xhr.statusText);
@@ -92,9 +93,8 @@ window.onload = function () {
           xhr.addEventListener('error', ()=>{reject(xhr.statusText)});
 
           data = JSON.stringify(data);
-
-          xhr.send(data);
-
+          
+          xhr.send('param=' + encodeURIComponent(data));
         });
 
       }
@@ -868,7 +868,10 @@ window.onload = function () {
       }
       
 
-      return [send, clientInfo];
+      return {
+          "order" : send,
+          "clientInfo": clientInfo
+        };
 
     },
   };
