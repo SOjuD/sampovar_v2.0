@@ -72,11 +72,14 @@ window.onload = function () {
     },
     buildCartPage(){
       var cartList = controller.loadCartList();
-      view.viewcartPage(cartList);
+      if(cartList){
+        view.viewcartPage(cartList);
+      }
     },
     sendOrder(){
       var data = controller.prepareOrderToSend();
-      var url = 'mailer.php';
+      if(data){
+        var url = 'mailer.php';
       function sendData(url){
         return new Promise( (resolve, reject)=>{
 
@@ -99,13 +102,15 @@ window.onload = function () {
 
       }
       sendData(url).then(
-        (request)=>{
-          console.log(request);
-          
+        (response)=>{
+          console.log(response);
           $('.popup').fadeIn(400);
           $('.successMessage').fadeIn(400);
           $('.popup').delay(2000).fadeOut(400);
           window.localStorage.removeItem('cartList');
+          view.viewcartPage([]);
+          view.hideCheckout();
+          view.viewCartListLength();
 
         },
         (err)=>{
@@ -116,6 +121,7 @@ window.onload = function () {
         }
       )
     }
+      }
   };
 
 
@@ -476,6 +482,10 @@ window.onload = function () {
       var container = li.querySelector('.current_count')
       container.textContent = count || 1;
     },
+    hideCheckout(){
+      $('.checkout').hide(300);
+      $('body,html').animate({scrollTop: $('#cartList').offset().top}, 1000);
+    },
   };
 
   var controller = {
@@ -509,18 +519,20 @@ window.onload = function () {
 
       var pageName = document.getElementById('page-name');
 
-      if(pageName && pageName.textContent.indexOf('Собери самую вкусную пиццу') > -1){
-        model.buildSize(request);
-        model.buildDough(request);
-        model.buildBases(request);
-        model.buildIngredients(request);
-        model.buildDips(request);
-        controller.createOrLoadCurrentPizza();
-      }
-
-
-      if(pageName && pageName.textContent == 'Корзина'){
-        model.buildCartPage(request);
+      if(request){
+        if(pageName && pageName.textContent.indexOf('Собери самую вкусную пиццу') > -1){
+          model.buildSize(request);
+          model.buildDough(request);
+          model.buildBases(request);
+          model.buildIngredients(request);
+          model.buildDips(request);
+          controller.createOrLoadCurrentPizza();
+        }
+  
+  
+        if(pageName && pageName.textContent == 'Корзина'){
+          model.buildCartPage(request);
+        }
       }
 
     },
@@ -763,12 +775,15 @@ window.onload = function () {
     calcCartPrice(){
       var cartList = controller.loadCartList();
 
-      price = 0;
-      for(pizza of cartList){
-        price += pizza.priceWithCount || pizza.totalPrice || 0;
+      if(cartList){
+        price = 0;
+        for(pizza of cartList){
+          price += pizza.priceWithCount || pizza.totalPrice || 0;
+        }
+        price = +price.toFixed(2);
+        return price;
       }
-      price = +price.toFixed(2);
-      return price
+      return 0;
     },
     appendLink(){
       var container = document.querySelector('.paycheck-wrap');

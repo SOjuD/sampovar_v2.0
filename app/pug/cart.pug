@@ -15,10 +15,10 @@ block append body
                         .delete Удалить
                     li.totalCart
                         div Всего в корзине: 
-                            span#cartTotalCount 1 
+                            span#cartTotalCount 0 
                             |  шт.
                         div Итого: 
-                            span#cartTotalPrice 10
+                            span#cartTotalPrice 0
                             |  р.
                             button#toCheckout.checkout.main-button Оформить заказ
         section.checkout 
@@ -33,8 +33,8 @@ block append body
                         input.clientInfo(type="text" name="adress" placeholder="Адрес доставки:")
                     li
                         .title 03. Выберите способ оплаты
-                        label
-                            input.clientInfo(type="radio" name="paymethod" value="Наличными")
+                        label.checked
+                            input.clientInfo(type="radio" name="paymethod" value="Наличными" checked)
                             span Наличными
                         label
                             input.clientInfo(type="radio" name="paymethod" value="Банковской картой")
