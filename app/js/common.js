@@ -547,11 +547,13 @@ window.onload = function () {
         var currentPizza = controller.loadPizza();
         for (key in currentPizza) {
           var param = document.getElementsByName(key);
-          param.forEach((elem) => {
-            if (elem.value == currentPizza[key].name) {
-              elem.parentElement.classList.add('checked');
-            }
-          });
+          if(typeof param == "object"){
+            param.forEach((elem) => {
+              if (elem.value == currentPizza[key].name) {
+                elem.parentElement.classList.add('checked');
+              }
+            });
+          }
         };
 
         view.viewBase();
