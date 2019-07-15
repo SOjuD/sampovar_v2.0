@@ -121,7 +121,7 @@ window.onload = function () {
         }
       )
     }
-      }
+    }
   };
 
 
