@@ -57,12 +57,15 @@
     
 
     .pizza-view
+        order: 1
         width: 100%
         max-width: 380px
         text-align: center
         position: sticky
         top: 10px
         .pizza-img
+            width: 100%
+            position: relative
             .board 
                 position: static
                 z-index: 0
@@ -72,6 +75,7 @@
                 width: 100%
                 top: 0
                 left: 0
+                max-width: 380px
                 // transform: translate(-50%, -50%)
         #restart
             margin-top: 30px
@@ -91,6 +95,7 @@
     
     
     .paycheck
+        order: 2
         position: sticky
         top: 10px
         width: 100%

@@ -34,22 +34,60 @@
     .container
         padding: 5px
     .constructor
+        .container
+            display: block
+            column-count: 2
         .pizza-view
-            order: 0
             position: static
+            display: inline-block
+            break-inside: avoide
         .ingredients
-            order: 1
-            max-width: 100%
+            display: inline-block
+            max-width: 400px
+            break-inside: avoide
+            .step
+                width: 100%
+                display: inline-block
+                break-inside: avoide
+                margin: 30px 0
+                transition: .3s
+                border-bottom: 1px solid #D0D0D0
+                &:last-child
+                    border: none
+                label
+                    line-height: 2
+                    padding-left: 50px
+                    width: 100%
+                    display: block
+                    &:before
+                        left: 20px
+                    &:after
+                        left: 22px
+                .step_title
+                    position: relative
+                    padding-right: 5%
+                    font-size: 1.3rem
+                    &:before 
+                        +pseudo 
+                        width: 20px
+                        height: 20px
+                        background: url(../img/plus.svg) no-repeat center
+                        background-size: 100% 100%
+                        top: 5%
+                        right: 10px
+                        display: block
+                        transition: .3s
+            .active_step 
+                border-color: transparent
+                .step_title:before 
+                    opacity: 0
             #step4 
-                .ingredients-wrap
-                    justify-content: space-around
                 .ingredient_item 
                     margin: 10px
         .step 
             .step_wrap
                 display: none
         .paycheck
-            order: 2
             position: static
 
                 
@@ -99,6 +137,8 @@
                 max-width: 100%
                 margin-bottom: 20px
 
+
+
 // ≥768px
 @media only screen and (max-width : 768px)
     footer 
@@ -130,7 +170,7 @@
 
 
 // ≥576px
-@media only screen and (max-width : 576px)
+@media only screen and (max-width : 640px)
     .top-line 
         .logo2
             width: 120px
@@ -143,43 +183,15 @@
         padding: 50px 0
         .container
             padding: 0
+            column-count: auto 
+            display: flex
+        .pizza-view
+            order: 0
         .ingredients
+            max-width: 100%
+            order: 1
             padding: 10px
-            .step
-                margin: 30px 0
-                transition: .3s
-                border-bottom: 1px solid #D0D0D0
-                &:last-child
-                    border: none
-                label
-                    line-height: 2
-                    padding-left: 50px
-                    width: 100%
-                    display: block
-                    &:before
-                        left: 20px
-                    &:after
-                        left: 22px
-                .step_title
-                    position: relative
-                    padding-right: 5%
-                    font-size: 1.3rem
-                    &:before 
-                        +pseudo 
-                        width: 20px
-                        height: 20px
-                        background: url(../img/plus.svg) no-repeat center
-                        background-size: 100% 100%
-                        top: 5%
-                        right: 10px
-                        display: block
-                        transition: .3s
-            .active_step 
-                border-color: transparent
-                .step_title:before 
-                    opacity: 0
             .ingredients-wrap
-                justify-content: space-around
                 .ingredient_item 
                     margin: 10px
                     width: 80px
