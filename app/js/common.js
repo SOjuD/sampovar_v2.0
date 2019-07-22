@@ -635,7 +635,7 @@ window.onload = function () {
             }
           });
 
-          for(ingredient of ingredientList){
+          for(let ingredient of ingredientList){
             if(ingredient.querySelector('.name').textContent == name){
               ingredient.querySelector('.current_count').textContent = 0
               break;
