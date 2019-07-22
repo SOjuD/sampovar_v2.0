@@ -1,52 +1,19 @@
-<?php 
+<?php
 
-if($_POST){
+                    
+$to = "<sportpizza.dostavka@gmail.com>";
+$url = "<sam-povar.by>";
 
-require_once('phpmailer/PHPMailerAutoload.php');
-$mail = new PHPMailer;
-$mail->CharSet = 'utf-8';
-
-
-
-//$mail->SMTPDebug = 3;                               
-
-$mail->isSMTP();                                      
-$mail->Host = 'smtp.mail.ru';  																							
-$mail->SMTPAuth = true;                               // Enable SMTP authentication
-$mail->Username = 'mediarama.by.mail2@mail.ru'; // Ваш логин от почты с которой будут отправляться письма
-$mail->Password = 'SSD1735271507ssd'; // Ваш пароль от почты с которой будут отправляться письма
-$mail->SMTPSecure = 'ssl';                      
-$mail->Port = 465; 
-
-$mail->setFrom('mediarama.by.mail2@mail.ru','sam-povar.by'); // от кого будет уходить письмо?
-$mail->addAddress('talrash666@gmail.com');     // Кому будет уходить письмо 
-// $mail->addAddress('mail2@gmail.com');     // Кому будет уходить письмо 
-// $mail->addAttachment($_FILES['upload']['tmp_name'], $_FILES['upload']['name']);    // Optional name
-$mail->isHTML(true);                                  // Set email format to HTML
-
+/* заказать звонок */ 
 
 $request = json_decode($_POST['param'], true);
 	$order = $request['order'];
 
-	$message = '';
-
-	// ------------------------------clientInfo------------------------------
-
-	$name 		=  	htmlspecialchars(trim($request['clientInfo']["name"]));
-	$phone 		=	htmlspecialchars(trim($request['clientInfo']["phone"]));
-	$adress 	=	htmlspecialchars(trim($request['clientInfo']["adress"]));
-	$paymethod 	=  	htmlspecialchars(trim($request['clientInfo']["paymethod"]));
-
-	// ------------------------------clientInfo------------------------------
-	
-	$message .= "<p>Имя: ".$name."</p>";
-	$message .= "<p>Телефон: ".$phone."</p>";
-	$message .= "<p>Адрес: ".$adress."</p>";
-	$message .= "<p>Метод оплаты: ".$paymethod."</p>";
+	$message = "<h1 style='background-color: #275050; color: #ffffff; text-align: center;'>Новый заказ</h1>";
 	
 	// ------------------------------order------------------------------
 		
-	$message .= "<ul>";
+	$message .= "<ul style = 'list-style: none; padding: 0;'>";
 	function buildMessage($array, $tagOpen="", $tagClose=""){
 		global $message;
 		foreach($array as $k => $v){
@@ -55,34 +22,48 @@ $request = json_decode($_POST['param'], true);
 				buildMessage($v);
 			}else{
 				if(is_integer($k)){
-					$message .= "<span>".$v."</span>, ";
+					$message .= "<i style='font-size: 1.2rem; display: block; padding-left: 40px;'>".$v." </i>";
 				}else{
-					$message .= "<p>".$k." : ".$v."</p>";
+					$message .= "<div style='font-size: 1.2rem;'>".$k." : ".$v."</div>";
 				}
 				
 			}
 			$message .= $tagClose;
 		}
 	};
-	buildMessage($order, "<li>Пицца<br>", "</li>");
+	buildMessage($order, "<li style='border-bottom: 1px solid #c4c4c4; padding: 20px'>", "</li>");
 
 	$message .= "</ul>";
-	// ------------------------------order------------------------------
+                                         
+	// ------------------------------clientInfo------------------------------
 
-$mail->Body = $message;
+	$message .= "<h2 style='background-color: #275050; color: #ffffff; text-align: center;'>Информация о клиенте</h2>";
 
-	if( $mail->send() ){
-		$answer = '1';
-	}else{
-		$answer = '0';
-		// /*echo 'Письмо не может быть отправлено. ';
-		echo 'Ошибка: ' . $mail->ErrorInfo;
-	}
-    die( $answer );
-    
-}
-?>
+	$name 		=  	htmlspecialchars(trim($request['clientInfo']["name"]));
+	$phone 		=	htmlspecialchars(trim($request['clientInfo']["phone"]));
+	$adress 	=	htmlspecialchars(trim($request['clientInfo']["adress"]));
+	$paymethod 	=  	htmlspecialchars(trim($request['clientInfo']["paymethod"]));
 
 
+	$message .= "<div style='font-size: 1.2rem;'>Имя: ".$name."</div>";
+	$message .= "<div style='font-size: 1.2rem;'>Телефон: ".$phone."</div>";
+	$message .= "<div style='font-size: 1.2rem;'>Адрес: ".$adress."</div>";
+	$message .= "<div style='font-size: 1.2rem;'>Метод оплаты: ".$paymethod."</div>";
+
+	// ------------------------------send------------------------------
 
 
+	$subject = "Новый заказ";
+
+
+/* Для отправки HTML-почты вы можете установить шапку Content-type. */
+$headers= "MIME-Version: 1.0\r\n";
+$headers .= "Content-type: text/html; charset=\"utf-8\"\r\n";
+
+/* дополнительные шапки */
+$headers .= "From: sam-povar.by";
+//$headers .= "Cc: mail@ya.ru\r\n";
+// $headers .= "Bcc: dnskulev.mrama@gmail.com\r\n";
+
+/* и теперь отправим из */
+mail($to, $subject, $message, $headers);

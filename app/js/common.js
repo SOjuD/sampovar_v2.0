@@ -23,7 +23,7 @@ window.onload = function () {
       var dough = data.dough;
       var sizes = [];
 
-      for (var i = 0; i < dough.length; i++) {
+      for(var i = 0; i < dough.length; i++) {
 
         var flag = sizes.find((element) => {
           if (element == dough[i].size)
@@ -40,7 +40,7 @@ window.onload = function () {
       var dough = data.dough;
       var doughTypes = [];
 
-      for (var i = 0; i < dough.length; i++) {
+      for(var i = 0; i < dough.length; i++) {
 
         var flag = doughTypes.find((element) => {
           if (element == dough[i].name)
@@ -259,11 +259,11 @@ window.onload = function () {
         var ingredientsNode = document.querySelectorAll('.ingredient_item');
 
 
-        for(elemNode of ingredientsNode){
+        for(let elemNode of ingredientsNode){
 
           var name = elemNode.querySelector('.name').textContent;
           if( Array.isArray(currentPizza.ingredients) ){
-            for(elem of currentPizza.ingredients){
+            for(let elem of currentPizza.ingredients){
               if(elem.name == name){
                 elemNode.querySelector('.current_count').textContent = elem.count;
                 continue;
@@ -320,7 +320,7 @@ window.onload = function () {
       }
 
       
-      for(item in ingredients){
+      for(let item in ingredients){
         var current = listTemp.cloneNode(true);
         current.querySelector('.product-name').textContent = ingredients[item].name;
         current.querySelector('.product-price span').textContent = ingredients[item].totalPrice;
@@ -334,7 +334,7 @@ window.onload = function () {
       var doughImg;
       var baseImg;
 
-      for(img of container.childNodes){
+      for(let img of container.childNodes){
         if(img.alt.indexOf('тесто') >= 0){
           doughImg = img;
           continue;
@@ -405,7 +405,7 @@ window.onload = function () {
       var container = document.querySelector('.pizza-img');
       var ingredientList = container.childNodes;
       if(name){
-        for(img of ingredientList){
+        for(let img of ingredientList){
           if(img.alt == name){
             img.remove();
           }
@@ -443,7 +443,7 @@ window.onload = function () {
       view.viewCartTotal(cartList);
 
       if(pizzaOfList){
-        for(pizza of pizzaOfList){
+        for(let pizza of pizzaOfList){
           pizza.remove();
         }
       }
@@ -463,7 +463,7 @@ window.onload = function () {
 
 
         if(value.ingredients){
-          for(ingredient of value.ingredients){
+          for(let ingredient of value.ingredients){
             ingredients += ", " +  ingredient.name;
           }
         }
@@ -545,16 +545,18 @@ window.onload = function () {
 
 
         var currentPizza = controller.loadPizza();
-        for (key in currentPizza) {
-          var param = document.getElementsByName(key);
-          if(typeof param == "object"){
-            param.forEach((elem) => {
-              if (elem.value == currentPizza[key].name) {
-                elem.parentElement.classList.add('checked');
-              }
-            });
-          }
-        };
+        if( typeof currentPizza == 'Object'){
+          for(let key in currentPizza) {
+            var param = document.getElementsByName(key);
+            if(typeof param == "object"){
+              param.forEach((elem) => {
+                if (elem.value == currentPizza[key].name) {
+                  elem.parentElement.classList.add('checked');
+                }
+              });
+            }
+          };
+        } 
 
         view.viewBase();
         view.viewIngredients();
@@ -577,14 +579,14 @@ window.onload = function () {
 
 
       if(paramName == 'base'){
-        for(base of request[paramName]){
+        for(let base of request[paramName]){
           if(base.name == paramVal){
             param.img = base.img || '';
           }
         }
       }else{
         if( currentPizza.hasOwnProperty('dough') ){
-          for (item of dough) {
+          for(let item of dough) {
             param.img = item.img || '';
             if (currentPizza.hasOwnProperty('size') && item.name == currentPizza.dough.name && item.size == currentPizza.size.name) {
               currentPizza.basePrice = item.price;
@@ -657,7 +659,7 @@ window.onload = function () {
       var imgs = ingredient.dataset.imgs || '';
           imgs = imgs.split(', ');
       function findIngredient() {
-        for (ingredient in currentPizzaIngredients) {
+        for(let ingredient in currentPizzaIngredients) {
           
           if (currentPizzaIngredients[ingredient].name == ingredientName) {
             var coincidence = {};
@@ -718,7 +720,7 @@ window.onload = function () {
       var ingredients = currentPizza.ingredients;
 
 
-      for(elem of ingredients){
+      for(let elem of ingredients){
         basePrice += elem.totalPrice || 0;
       }
 
@@ -733,7 +735,7 @@ window.onload = function () {
 
         var ingredients = currentPizza.ingredients;
 
-        for(elem of ingredients){
+        for(let elem of ingredients){
           ingredientsWeight += elem.totalWeight || 0;
         }
       }
@@ -749,12 +751,12 @@ window.onload = function () {
       view.hiddenIngredients();
 
       var checkeds = document.querySelectorAll('.checked');
-      for(checked of checkeds){
+      for(let checked of checkeds){
         checked.classList.remove('checked');
         checked.getElementsByTagName('input')[0].checked = false;
       }
       var counts = document.getElementsByClassName('current_count');
-      for(count of counts){
+      for(let count of counts){
         count.textContent = 0;
       }
 
@@ -779,7 +781,7 @@ window.onload = function () {
 
       if(cartList){
         price = 0;
-        for(pizza of cartList){
+        for(let pizza of cartList){
           price += pizza.priceWithCount || pizza.totalPrice || 0;
         }
         price = +price.toFixed(2);
@@ -838,14 +840,14 @@ window.onload = function () {
     },
     calcCartListLength(cartList){
       var length = 0;
-      for(pizza of cartList){
+      for(let pizza of cartList){
         var count = pizza.count || 1;
         length += count;
       }
       return length;
     },
     calcPriceWithCount(cartList){
-      for(pizza of cartList){
+      for(let pizza of cartList){
         pizza.priceWithCount = +((pizza.totalPrice || pizza.basePrice) * (pizza.count || 1)).toFixed(2);
       }
       controller.uploadCartList(cartList);
@@ -853,7 +855,7 @@ window.onload = function () {
     prepareOrderToSend(){
       var cartList = controller.loadCartList();
       var send = [];
-      for(pizza of cartList){
+      for(let pizza of cartList){
         var current = {};
 
         current.count = pizza.count || 1;
@@ -862,7 +864,7 @@ window.onload = function () {
         current.base = pizza.base.name;
         if(Array.isArray(pizza.ingredients)){
           current.ingredients = [];
-          for(el of pizza.ingredients){
+          for(let el of pizza.ingredients){
             var val = el.name + " : " + el.count + " порций";
             current.ingredients.push(val);
           }
@@ -876,7 +878,7 @@ window.onload = function () {
       send.push(totalPrice);
       var clientInfo = {};
       var clientInfoItems = document.querySelectorAll('.clientInfo');
-      for(input of clientInfoItems){
+      for(let input of clientInfoItems){
         var name = input.getAttribute('name');
         var val = input.value;
         if(val){
