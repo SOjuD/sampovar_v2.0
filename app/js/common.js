@@ -780,7 +780,7 @@ window.onload = function () {
       var cartList = controller.loadCartList();
 
       if(cartList){
-        price = 0;
+        var price = 0;
         for(let pizza of cartList){
           price += pizza.priceWithCount || pizza.totalPrice || 0;
         }
@@ -879,10 +879,20 @@ window.onload = function () {
       var clientInfo = {};
       var clientInfoItems = document.querySelectorAll('.clientInfo');
       for(let input of clientInfoItems){
-        var name = input.getAttribute('name');
-        var val = input.value;
-        if(val){
-          clientInfo[name] = val;
+        if(input.type == "radio"){
+          if(input.checked){
+            var name = input.getAttribute('name');
+            var val = input.value;
+            if(val){
+              clientInfo[name] = val;
+            }
+          }
+        }else{
+          var name = input.getAttribute('name');
+          var val = input.value;
+          if(val){
+            clientInfo[name] = val;
+          }
         }
       }
       
@@ -986,7 +996,7 @@ window.onload = function () {
 
 
   function jqueryFunctions() {
-    $('input[type=radio').change(function () {
+    $('input[type=radio]').change(function () {
       var name = $(this).attr('name');
       $('input[name=' + name + ']').parent().removeClass('checked');
       if ($(this).prop('checked')) $(this).parent().addClass('checked');
