@@ -225,13 +225,31 @@
             "imgs": ["img/ingredients/agaricus1.png", "img/ingredients/agaricus2.png", "img/ingredients/agaricus3.png"]
         },
         {
-            "name": "Дополнительный сыр",
+            "name": "Доп. сыр",
             "category": "Сыр",
             "weight": [80],
             "price": 1.20,
             "maximum": 1,
             "icon": "img/icons/cheese.png",
             "imgs": ["img/ingredients/cheese.png"]
+        },
+        {
+            "name": "Сыр с синей плесенью",
+            "category": "Сыр",
+            "weight": [50, 100, 150],
+            "price": 6,
+            "maximum": 3,
+            "icon": "img/icons/cheese-blue.png",
+            "imgs": ["img/ingredients/cheese_blue1.png", "img/ingredients/cheese_blue2.png", "img/ingredients/cheese_blue3.png"]
+        },
+        {
+            "name": "Сыр с белой плесенью",
+            "category": "Сыр",
+            "weight": [50, 100, 150],
+            "price": 6,
+            "maximum": 3,
+            "icon": "img/icons/cheese-white.png",
+            "imgs": ["img/ingredients/cheese_white1.png", "img/ingredients/cheese_white2.png", "img/ingredients/cheese_white3.png"]
         },
         {
             "name": "Пармезан",
