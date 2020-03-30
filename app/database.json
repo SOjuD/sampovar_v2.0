@@ -171,24 +171,6 @@
             "imgs": ["img/ingredients/onion1.png", "img/ingredients/onion2.png", "img/ingredients/onion3.png"]
         },
         {
-            "name": "Кукуруза",
-            "category": "Овощи и фрукты",
-            "weight": [15, 30, 45],
-            "price": 0.15,
-            "maximum": 3,
-            "icon": "img/icons/corn.png",
-            "imgs": ["img/ingredients/corn1.png", "img/ingredients/corn2.png", "img/ingredients/corn3.png"]
-        },
-        {
-            "name": "Горошек",
-            "category": "Овощи и фрукты",
-            "weight": [15, 30, 45],
-            "price": 0.17,
-            "maximum": 3,
-            "icon": "img/icons/pea.png",
-            "imgs": ["img/ingredients/pea1.png", "img/ingredients/pea2.png", "img/ingredients/pea3.png"]
-        },
-        {
             "name": "Перец болгарский",
             "category": "Овощи и фрукты",
             "weight": [15, 30, 45],
